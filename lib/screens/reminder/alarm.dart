@@ -59,7 +59,6 @@ class _AlarmState extends State<Alarm> {
       initialTime: TimeOfDay.now(),
     );
 
-  
     if (selectedTimeRTL != null) {
       int hour = selectedTimeRTL.hour;
       int min = selectedTimeRTL.minute;
@@ -189,6 +188,7 @@ class _AlarmState extends State<Alarm> {
               ),
               multipleAlarm != null
                   ? ListView.builder(
+                      padding: EdgeInsets.all(16),
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       itemCount: multipleAlarm.length,
