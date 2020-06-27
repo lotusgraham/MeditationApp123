@@ -5,7 +5,6 @@ class Reminder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-
       children: <Widget>[
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 40),

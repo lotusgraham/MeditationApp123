@@ -47,10 +47,19 @@ class _AlarmState extends State<Alarm> {
   }
 
   selecttime(BuildContext context) async {
+    // TimeOfDay selectedTimeRTL = await showTimePicker(
+    //   context: context,
+    //   initialTime: TimeOfDay.now(),
+    //   builder: (BuildContext context, Widget child) {
+    //     return Container(color: Colors.blue, child: child);
+    //   },
+    // );
     TimeOfDay selectedTimeRTL = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
     );
+
+  
     if (selectedTimeRTL != null) {
       int hour = selectedTimeRTL.hour;
       int min = selectedTimeRTL.minute;
