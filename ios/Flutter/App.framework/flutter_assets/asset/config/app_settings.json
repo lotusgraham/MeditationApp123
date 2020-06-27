@@ -1,8 +1,0 @@
-{
-    "twitterConsumerKey": "EXAMPLE WpQmhCCf0MlkvBvcfNNSg69EWK",
-    "twitterConsumerSecret": "Example s9LKLBMmSBXftuftv498KxvsAZaKLyPx3czsx2o5FiKpGD4ilS",
-    "firebaseProjectID": "joyhome-cd900",
-    "cloudFunctionPay" : "Example https://<region>-<firebaseProjectID>.cloudfunctions.net/pay",
-    "cloudFunctionGenerateNonce" :"Example https://<region>-<firebaseProjectID>.cloudfunctions.net/generateNonce",
-    "dynamicLinkInvite" : "https://deligence.com"
-}
