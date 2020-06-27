@@ -25,6 +25,7 @@ class _DetailsState extends State<Details> {
 
   @override
   void initState() {
+    super.initState();
     ctrl.addListener(() {
       int next = ctrl.page.round();
 
@@ -34,8 +35,6 @@ class _DetailsState extends State<Details> {
         });
       }
     });
-
-    super.initState();
     _getAudioDetailsAndCheckExpiry();
   }
 
@@ -123,7 +122,7 @@ class _DetailsState extends State<Details> {
                 child: Text(
                   "${widget.name}",
                   style: TextStyle(
-                    decoration: TextDecoration.none,
+                      decoration: TextDecoration.none,
                       fontSize: 18,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
