@@ -1,0 +1,6 @@
+framework module BraintreeDropIn {
+  umbrella header "BraintreeDropIn-umbrella.h"
+
+  export *
+  module * { export * }
+}

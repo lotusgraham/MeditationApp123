@@ -1,0 +1,6 @@
+framework module flutter_braintree {
+  umbrella header "flutter_braintree-umbrella.h"
+
+  export *
+  module * { export * }
+}

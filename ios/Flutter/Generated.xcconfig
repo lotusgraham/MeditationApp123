@@ -1,0 +1,11 @@
+// This is a generated file; do not edit or check into version control.
+FLUTTER_ROOT=/Users/lotusgraham/flutter
+FLUTTER_APPLICATION_PATH=/Users/lotusgraham/Projects/NewApp/NWL App
+FLUTTER_TARGET=/Users/lotusgraham/Projects/NewApp/NWL App/lib/main.dart
+FLUTTER_BUILD_DIR=build
+SYMROOT=${SOURCE_ROOT}/../build/ios
+OTHER_LDFLAGS=$(inherited) -framework Flutter
+FLUTTER_FRAMEWORK_DIR=/Users/lotusgraham/flutter/bin/cache/artifacts/engine/ios
+FLUTTER_BUILD_NAME=1.0.0
+FLUTTER_BUILD_NUMBER=2
+TRACK_WIDGET_CREATION=true

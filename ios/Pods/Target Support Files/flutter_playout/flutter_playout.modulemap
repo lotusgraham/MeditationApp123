@@ -1,0 +1,6 @@
+framework module flutter_playout {
+  umbrella header "flutter_playout-umbrella.h"
+
+  export *
+  module * { export * }
+}

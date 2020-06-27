@@ -1,0 +1,89 @@
+name: meditation
+description: A new Flutter project.
+
+version: 1.0.0+2
+
+environment:
+  sdk: ">=2.8.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+    
+  cupertino_icons: ^0.1.3
+  flutter_svg: ^0.17.4
+  story_view:
+  vector_math: ^2.0.8
+  flutter_circular_chart: ^0.1.0
+  simple_animations:
+  curved_navigation_bar: ^0.3.3
+  connectivity: ^0.4.8+6
+  audio: ^0.0.5
+  firebase_auth: ^0.16.1
+  google_sign_in: ^4.5.1
+  flutter_facebook_login: ^3.0.0
+  cloud_firestore: ^0.13.7
+  # removes this twitter login plugin because the plugin is not maintained anymore
+  # flutter_twitter_login: 
+  #   git: git://github.com/rishabh-deligence/flutter_twitter_login.git
+  # flutter_twitter_login iOS bug. Ref: https://github.com/roughike/flutter_twitter_login/issues/12
+  global_configuration: ^1.5.0
+  image_picker: ^0.6.7+2
+  shimmer: ^1.1.1
+  image_cropper: ^1.2.3
+  firebase_storage: ^3.1.6
+  #https://github.com/MaikuB/flutter_local_notifications/issues/450
+  flutter_local_notifications: ^1.4.4+1
+  intl: ^0.16.1
+  shared_preferences: ^0.5.7+3
+  firebase_messaging: ^6.0.16
+  flutter_braintree: ^0.6.0
+  http: ^0.12.1
+  rflutter_alert: ^1.0.3
+  share: ^0.6.4+3
+  flutter_playout: ^1.0.35
+  firebase_crashlytics: ^0.1.3+3
+  firebase_core: ^0.4.5
+
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.7.5
+
+flutter_icons:
+  android: "launcher_icon" 
+  ios: true
+  image_path: "asset/img/logo-with-text.png"
+  image_path_ios: "asset/img/logo-with-text-ios.jpg"
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+   - asset/img/
+   - asset/img/social-icon/
+   - asset/img/bg/
+   - asset/config/
+
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: asset/font/Raleway/Raleway-Regular.ttf
+          weight: 400
+        - asset: asset/font/Raleway/Raleway-Medium.ttf
+          weight: 500
+        - asset: asset/font/Raleway/Raleway-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: asset/font/Raleway/Raleway-SemiBold.ttf
+          weight: 600
+        - asset: asset/font/Raleway/Raleway-SemiBoldItalic.ttf
+          weight: 600
+          style: italic    
+        - asset: asset/font/Raleway/Raleway-Bold.ttf
+          weight: 700
+        - asset: asset/font/Raleway/Raleway-BoldItalic.ttf
+          weight: 700
+          style: italic

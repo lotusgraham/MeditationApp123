@@ -1,0 +1,26 @@
+{
+  "name": "cloud_firestore_web",
+  "version": "0.1.0",
+  "summary": "No-op implementation of cloud_firestore_web web plugin to avoid build issues on iOS",
+  "description": "temp fake firebase_auth_web plugin",
+  "homepage": "https://github.com/FirebaseExtended/flutterfire/tree/master/packages/cloud_firestore/cloud_firestore_web",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": {
+    "Flutter Team": "flutter-dev@googlegroups.com"
+  },
+  "source": {
+    "path": "."
+  },
+  "source_files": "Classes/**/*",
+  "public_header_files": "Classes/**/*.h",
+  "dependencies": {
+    "Flutter": [
+
+    ]
+  },
+  "platforms": {
+    "ios": "8.0"
+  }
+}

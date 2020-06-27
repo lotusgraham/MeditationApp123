@@ -1,0 +1,22 @@
+/// Credit card types
+typedef NS_ENUM(NSInteger, BTUIKPaymentOptionType) {
+    BTUIKPaymentOptionTypeUnknown = 0,
+    BTUIKPaymentOptionTypeAMEX,
+    BTUIKPaymentOptionTypeDinersClub,
+    BTUIKPaymentOptionTypeDiscover,
+    BTUIKPaymentOptionTypeMasterCard,
+    BTUIKPaymentOptionTypeVisa,
+    BTUIKPaymentOptionTypeJCB,
+    BTUIKPaymentOptionTypeLaser,
+    BTUIKPaymentOptionTypeMaestro,
+    BTUIKPaymentOptionTypeUnionPay,
+    BTUIKPaymentOptionTypeHiper,
+    BTUIKPaymentOptionTypeHipercard,
+    BTUIKPaymentOptionTypeSolo,
+    BTUIKPaymentOptionTypeSwitch,
+    BTUIKPaymentOptionTypeUKMaestro,
+    BTUIKPaymentOptionTypePayPal,
+    BTUIKPaymentOptionTypeCoinbase,
+    BTUIKPaymentOptionTypeVenmo,
+    BTUIKPaymentOptionTypeApplePay,
+};
