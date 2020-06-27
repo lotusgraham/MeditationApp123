@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'package:meditation/screens/calendar.dart';
 import 'package:meditation/screens/details.dart';
 import 'package:meditation/screens/reminder/alarm.dart';
 import 'package:meditation/screens/setting.dart';
@@ -13,6 +14,7 @@ import 'package:meditation/util/color.dart';
 import 'package:flutter/services.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 // import 'explore.dart';
 
@@ -31,6 +33,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with WidgetsBindingObserver {
   FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
+
   initState() {
     super.initState();
     _getFeaturedStories();
@@ -239,39 +242,26 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
   }
 
   buildGuidedMeditation() {
-    return Container(
-      // height: MediaQuery.of(context).size.height * .28
-      height: 200,
-      width: MediaQuery.of(context).size.width - 40,
-      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('asset/img/bg/guideMeditation.jpg'),
-              alignment: Alignment.centerRight,
-              fit: BoxFit.cover),
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Color.fromRGBO(12, 12, 12, .3),
-              blurRadius: 10,
-              offset: Offset(0, 10),
-            )
-          ]),
+    YoutubePlayerController _controller = YoutubePlayerController(
+      initialVideoId: 'FkZ8tucHCto',
+      flags: YoutubePlayerFlags(autoPlay: true, mute: false, loop: true),
+    );
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
       child: Container(
-        padding: EdgeInsets.fromLTRB(10, 10, 130, 10),
-        child: Column(
-          children: <Widget>[
-            Text('Guided meditation for Beginners',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: textColor)),
-            SizedBox(
-              height: 15,
-            ),
-            Text('Most Volunteers had continued practicing regular',
-                style: TextStyle(fontSize: 16, color: textColor))
-          ],
+        // height: MediaQuery.of(context).size.height * .28
+        // height: 200,
+        width: MediaQuery.of(context).size.width - 40,
+        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+        child: YoutubePlayer(
+          controller: _controller,
+          showVideoProgressIndicator: true,
+          onReady: () {
+            _controller.addListener(() {});
+          },
+          // onReady () {
+          //     _controller.addListener(listener);
+          // },
         ),
       ),
     );
@@ -280,19 +270,20 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     Widget _page1 = SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Container(
-      height: MediaQuery.of(context).size.height +
-          120 * (categoryList.length / 2).round().toDouble(),
-      // height: MediaQuery.of(context).size.height + 190,
-      child: Stack(children: <Widget>[
-        appBarWidget(),
-        buildWidget(),
-      ]),
-    ));
+          height: MediaQuery.of(context).size.height +
+              120 * (categoryList.length / 2).round().toDouble(),
+          // height: MediaQuery.of(context).size.height + 190,
+          child: Stack(children: <Widget>[
+            appBarWidget(),
+            buildWidget(),
+          ]),
+        ));
     Widget _progress = Alarm();
     // Widget _explore = Explore();
     Widget _setting = Setting();
-    pages = [_page1, _progress, _setting];
+    pages = [_page1, CalendarCustomWidget(), _progress, _setting];
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -340,6 +331,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
         buttonBackgroundColor: primaryColor,
         items: [
           Icon(Icons.home, color: iconColor),
+          Icon(Icons.calendar_today, color: iconColor),
           Icon(Icons.alarm, color: iconColor),
           // Icon(Icons.explore, color: iconColor),
           Icon(Icons.settings, color: iconColor),
@@ -379,7 +371,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                                 horizontal: 5, vertical: 6),
                             child: Text(cl['name'],
                                 style: TextStyle(
-                                      decoration: TextDecoration.none,
+                                    decoration: TextDecoration.none,
                                     color: textColor,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600)),
