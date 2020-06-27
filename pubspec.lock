@@ -623,8 +623,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.16"
-<<<<<<< HEAD
-=======
   timezone:
     dependency: transitive
     description:
@@ -632,7 +630,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.7"
->>>>>>> 47e0e364091107ccecac8e4995743139bf6d48eb
   typed_data:
     dependency: transitive
     description:

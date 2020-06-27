@@ -44,7 +44,7 @@ dependencies:
   flutter_playout: ^1.0.35
   firebase_crashlytics: ^0.1.3+3
   firebase_core: ^0.4.5
-  youtube_player_flutter:
+  youtube_player_flutter: 
   syncfusion_flutter_calendar:
 
   
