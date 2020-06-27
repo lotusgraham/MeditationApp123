@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:meditation/models/splash-model.dart';
 import 'package:meditation/screens/auth/login.dart';
 import 'package:meditation/util/color.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../util/color.dart';
 import 'auth/login.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -39,16 +41,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void initState() {
     super.initState();
     _pagecontroller = PageController();
-    _pagecontroller.addListener(() {
-      if (currentPage != _pagecontroller.page.floor() &&
-          (_pagecontroller.page == 0.0 ||
-              _pagecontroller.page == 1.0 ||
-              _pagecontroller.page == 2.0)) {
-        setState(() {
-          currentPage = _pagecontroller.page.floor();
-        });
-      }
-    });
   }
 
   @override
@@ -123,45 +115,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           Positioned(
             bottom: 90,
             left: MediaQuery.of(context).size.width / 2.4,
-            child: buildPageIndicator(),
-          )
-        ],
-      ),
-    );
-  }
-
-  Container buildPageIndicator() {
-    double indicatorsize = 15.0;
-    return Container(
-      height: 30.0,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          Container(
-            margin: const EdgeInsets.only(right: 5.0),
-            width: indicatorsize,
-            height: indicatorsize,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(indicatorsize),
-                color: currentPage == 0 ? primaryColor : Colors.white,
-                border: Border.all(color: primaryColor, width: 2.0)),
-          ),
-          Container(
-            margin: const EdgeInsets.only(right: 5.0),
-            width: indicatorsize,
-            height: indicatorsize,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(indicatorsize),
-                color: currentPage == 1 ? primaryColor : Colors.white,
-                border: Border.all(color: primaryColor, width: 2.0)),
-          ),
-          Container(
-            width: indicatorsize,
-            height: indicatorsize,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(indicatorsize),
-                color: currentPage == 2 ? primaryColor : Colors.white,
-                border: Border.all(color: primaryColor, width: 2.0)),
+            child: SmoothPageIndicator(
+              controller: _pagecontroller,
+              count: 3,
+              effect: WormEffect(
+                activeDotColor: primaryColor,
+              ),
+            ),
           )
         ],
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:meditation/screens/auth/forgetPassword.dart';
 import 'package:meditation/screens/auth/signup.dart';
@@ -311,23 +312,7 @@ class _LoginState extends State<Login> {
                     context, CupertinoPageRoute(builder: (context) => Home()));
               },
             ),
-            SizedBox(width: 20),
-            InkWell(
-              child: Material(
-                child: SvgPicture.asset(
-                  'asset/img/social-icon/facebook.svg',
-                  semanticsLabel: 'Acme Logo',
-                  height: 35,
-                  width: 35,
-                ),
-              ),
-              onTap: () async {
-                final FirebaseUser currentUser = await _handleFacebookSignIn();
-                await _setDataUser(currentUser);
-                await Navigator.push(
-                    context, CupertinoPageRoute(builder: (context) => Home()));
-              },
-            ),
+
             // SizedBox(width: 20),
             // InkWell(
             //   child: Material(
@@ -377,43 +362,37 @@ class _LoginState extends State<Login> {
   }
 
   Future<FirebaseUser> _handleGoogleSignIn() async {
-    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
+    final GoogleSignInAccount googleSignInAccount =
+        await _googleSignIn.signIn().catchError((e) => print(e));
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    final FirebaseUser user =
-        (await _auth.signInWithCredential(credential)).user;
-    print("signed in as " + user.toString());
-    return user;
-  }
-
-  Future<FirebaseUser> _handleFacebookSignIn() async {
-    final FacebookLoginResult facebookAuth =
-        await facebookLogin.logIn(['email']);
-    FirebaseUser user;
-    switch (facebookAuth.status) {
-      case FacebookLoginStatus.loggedIn:
-        final AuthCredential credential = FacebookAuthProvider.getCredential(
-          accessToken: facebookAuth.accessToken.token,
+    if (googleSignInAccount != null) {
+      final GoogleSignInAuthentication googleSignInAuth =
+          await googleSignInAccount.authentication;
+      if (googleSignInAuth.accessToken != null &&
+          googleSignInAuth.idToken != null) {
+        final AuthCredential credential = GoogleAuthProvider.getCredential(
+          accessToken: googleSignInAuth.accessToken,
+          idToken: googleSignInAuth.idToken,
         );
-        user = (await _auth.signInWithCredential(credential)).user;
-        print("signed in as " + user.displayName);
-        break;
-      case FacebookLoginStatus.cancelledByUser:
-        debugPrint("Facebook Canceled by user");
-        throw (facebookAuth.errorMessage);
-        break;
-      case FacebookLoginStatus.error:
-        print("Error Occurred while logging with facebook");
-        throw (facebookAuth.errorMessage);
-        break;
+        final AuthResult authResult =
+            await _auth.signInWithCredential(credential);
+        final FirebaseUser user = authResult.user;
+        assert(!user.isAnonymous);
+        assert(await user.getIdToken() != null);
+
+        final FirebaseUser currentUser = await _auth.currentUser();
+        assert(user.uid == currentUser.uid);
+
+        return user;
+      } else {
+        throw PlatformException(
+            code: 'ERROR_MISSING_GOOGLE_AUTH_TOKEN',
+            message: 'Missing Google Auth Token');
+      }
+    } else {
+      throw PlatformException(
+          code: 'ERROR_ABORTED_BY_USER', message: 'Sign in aborted by user');
     }
-    return user;
   }
 
   // Future<FirebaseUser> _handletTwitterSignIn() async {
