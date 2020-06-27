@@ -46,6 +46,7 @@ dependencies:
   firebase_core: ^0.4.5
   youtube_player_flutter: 
   syncfusion_flutter_calendar:
+  smooth_page_indicator: ^0.1.5
 
   
 dev_dependencies:
