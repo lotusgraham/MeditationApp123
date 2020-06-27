@@ -95,6 +95,7 @@ class _ShareInviteState extends State<ShareInvite>
 
   @override
   void initState() {
+    super.initState();
     animationController = new AnimationController(
         vsync: this, duration: new Duration(seconds: 2));
 
@@ -114,8 +115,6 @@ class _ShareInviteState extends State<ShareInvite>
       }
     });
     animationController.repeat();
-
-    super.initState();
   }
 
   @override

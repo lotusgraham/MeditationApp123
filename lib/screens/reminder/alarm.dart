@@ -59,7 +59,6 @@ class _AlarmState extends State<Alarm> {
       initialTime: TimeOfDay.now(),
     );
 
-  
     if (selectedTimeRTL != null) {
       int hour = selectedTimeRTL.hour;
       int min = selectedTimeRTL.minute;
@@ -153,42 +152,45 @@ class _AlarmState extends State<Alarm> {
     return SafeArea(
         bottom: true,
         child: Scaffold(
-            body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              AppBar(
-                  backgroundColor: Colors.transparent,
-                  titleSpacing: 10.0,
-                  automaticallyImplyLeading: false,
-                  title: RichText(
-                    text: TextSpan(children: [
-                      TextSpan(text: "\n"),
-                      TextSpan(
-                        text: "Set Reminder",
-                        style: TextStyle(
-                            color: Color(0xFF1A1A1A),
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      TextSpan(text: "\n"),
-                      TextSpan(
-                        text:
-                            "The people who set reminder achieve their goals twice as fast.",
-                        style:
-                            TextStyle(color: Color(0xFF1A1A1A), fontSize: 12),
-                      )
-                    ]),
-                  ),
-                  elevation: 0.0),
-              SizedBox(
-                height: 20,
-              ),
-              Reminder(),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * .07,
-              ),
-              multipleAlarm != null
-                  ? ListView.builder(
+            body: Column(
+          children: <Widget>[
+            AppBar(
+                backgroundColor: Colors.transparent,
+                titleSpacing: 10.0,
+                automaticallyImplyLeading: false,
+                title: RichText(
+                  text: TextSpan(children: [
+                    TextSpan(text: "\n"),
+                    TextSpan(
+                      text: "Set Reminder",
+                      style: TextStyle(
+                          color: Color(0xFF1A1A1A),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    TextSpan(text: "\n"),
+                    TextSpan(
+                      text:
+                          "The people who set reminder achieve their goals twice as fast.",
+                      style: TextStyle(color: Color(0xFF1A1A1A), fontSize: 12),
+                    )
+                  ]),
+                ),
+                elevation: 0.0),
+            SizedBox(
+              height: 16,
+            ),
+            Reminder(),
+            // SizedBox(
+            //   height: MediaQuery.of(context).size.height * .04,
+            // ),
+            SizedBox(
+              height: 16,
+            ),
+            multipleAlarm != null
+                ? Flexible(
+                    child: ListView.builder(
+                      padding: EdgeInsets.all(16),
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       itemCount: multipleAlarm.length,
@@ -197,8 +199,11 @@ class _AlarmState extends State<Alarm> {
 
                         return Dismissible(
                           secondaryBackground: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: primaryColor,
+                              ),
                               padding: EdgeInsets.only(right: 20),
-                              color: primaryColor,
                               alignment: Alignment.centerRight,
                               child: Icon(
                                 Icons.delete,
@@ -232,34 +237,34 @@ class _AlarmState extends State<Alarm> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Color(0xff2d386b),
-                                    fontSize: 30,
+                                    fontSize: 28,
                                     fontWeight: FontWeight.w700),
                               ),
                             ),
                           ),
                         );
                       },
-                    )
-                  : SizedBox(),
-              Container(
-                padding: EdgeInsets.only(right: 20),
-                alignment: Alignment.bottomRight,
-                child: FloatingActionButton.extended(
-                  heroTag: UniqueKey,
-                  label: Icon(
-                    Icons.add,
-                    color: Color(0xff2d386b),
-                    size: 20,
-                  ),
-                  backgroundColor: Colors.white,
-                  onPressed: () => selecttime(context),
+                    ),
+                  )
+                : SizedBox(),
+            Container(
+              padding: EdgeInsets.only(right: 20),
+              alignment: Alignment.bottomRight,
+              child: FloatingActionButton.extended(
+                heroTag: UniqueKey,
+                label: Icon(
+                  Icons.add,
+                  color: Color(0xff2d386b),
+                  size: 20,
                 ),
+                backgroundColor: Colors.white,
+                onPressed: () => selecttime(context),
               ),
-              SizedBox(
-                height: 70,
-              )
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 70,
+            )
+          ],
         )));
   }
 }

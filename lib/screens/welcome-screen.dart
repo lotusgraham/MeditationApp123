@@ -37,6 +37,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   void initState() {
+    super.initState();
     _pagecontroller = PageController();
     _pagecontroller.addListener(() {
       if (currentPage != _pagecontroller.page.floor() &&
@@ -48,7 +49,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         });
       }
     });
-    super.initState();
   }
 
   @override

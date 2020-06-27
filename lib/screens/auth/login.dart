@@ -422,7 +422,7 @@ class _LoginState extends State<Login> {
   //   switch (twitterAuth.status) {
   //     case TwitterLoginStatus.loggedIn:
   //       final AuthCredential credential = TwitterAuthProvider.getCredential(
-  //         authToken: twitterAuth.session.token,
+  //         authToken: twitterAuth.session.token,,,,.0
   //         authTokenSecret: twitterAuth.session.secret,
   //       );
   //       // Note : Flutter Engine Issue || Temp Fix
