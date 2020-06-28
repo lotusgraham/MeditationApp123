@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meditation/util/color.dart';
+import 'package:flutter/animation.dart';
 import 'package:simple_animations/simple_animations.dart';
 
 import '../enums/gradient_animation_enum.dart';

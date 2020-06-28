@@ -15,7 +15,6 @@ dependencies:
   story_view: ^0.11.2
   vector_math: ^2.0.8
   flutter_circular_chart: ^0.1.0
-  simple_animations:
   curved_navigation_bar: ^0.3.3
   connectivity: ^0.4.8+6
   audio: ^0.0.5
@@ -52,7 +51,8 @@ dependencies:
   html:
   flutter_html:
   url_launcher:
-    
+  simple_animations:
+
 
 dev_dependencies:
   flutter_test:

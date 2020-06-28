@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:meditation/screens/home/home.dart';
 import 'package:provider/provider.dart';
 
 import '../../../provider/auth_provider.dart';
 import '../../../util/animation.dart';
 import '../../../util/color.dart';
-import '../../home.dart';
 import '../signup.dart';
 import 'widgets/login_form.dart';
 import '../../../util/gardient_animation.dart';
@@ -112,7 +112,7 @@ class _LoginState extends State<Login> {
           child: InkWell(
             onTap: () {
               Navigator.pushReplacement(
-                  context, CupertinoPageRoute(builder: (context) => Home()));
+                  context, CupertinoPageRoute(builder: (context) => HomeWrapper()));
             },
             child: Container(
               height: 50,
@@ -152,7 +152,7 @@ class _LoginState extends State<Login> {
                     .then((value) {
                   Navigator.pushReplacement(
                     context,
-                    CupertinoPageRoute(builder: (context) => Home()),
+                    CupertinoPageRoute(builder: (context) => HomeWrapper()),
                   );
                 });
               },

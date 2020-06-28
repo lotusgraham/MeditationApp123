@@ -33,12 +33,12 @@ class CalendarPm extends ChangeNotifier {
 
   onViewChange(ViewChangedDetails details) {}
 
-  
-
   _notify() {
-    if (this.hasListeners) {
-      notifyListeners();
-    }
+    try {
+      if (this.hasListeners) {
+        notifyListeners();
+      }
+    } catch (e) {}
   }
 
   @override
