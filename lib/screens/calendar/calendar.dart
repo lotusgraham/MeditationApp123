@@ -31,7 +31,7 @@ class _CalendarCustomWidgetState extends State<CalendarCustomWidget> {
               return astart.compareTo(bstart);
             });
             return SimpleDialog(
-              useMaterialBorderRadius: true,
+              // useMaterialBorderRadius: true,
               children: l.map((v) {
                 DateTime dtstart = v.dtstart;
                 DateTime dtend = v.dtend;
@@ -64,11 +64,11 @@ class _CalendarCustomWidgetState extends State<CalendarCustomWidget> {
                               .toString()
                               .trim()
                               .replaceAll("\\", ""),
-                          defaultTextStyle: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black,
-                            fontSize: 14.0,
-                          ),
+                          // defaultTextStyle: TextStyle(
+                          //   fontWeight: FontWeight.w700,
+                          //   color: Colors.black,
+                          //   fontSize: 14.0,
+                          // ),
                           onLinkTap: (String link) async {
                             if (await canLaunch(link)) {
                               launch(link);
