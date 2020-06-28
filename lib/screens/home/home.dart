@@ -327,7 +327,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
     }
 
     Widget _page1 = SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+      physics: ClampingScrollPhysics(),
       child: Container(
         height: MediaQuery.of(context).size.height +
             120 * (homePm.categoryList.length / 2).round().toDouble(),
