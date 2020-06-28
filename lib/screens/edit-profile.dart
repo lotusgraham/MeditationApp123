@@ -47,6 +47,15 @@ class _EditProfileState extends State<EditProfile> {
     currentuser();
   }
 
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    phnctlr.dispose();
+    emailctlr.dispose();
+    super.dispose();
+  }
+
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (image != null) {
