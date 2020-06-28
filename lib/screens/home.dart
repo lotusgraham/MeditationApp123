@@ -8,6 +8,7 @@ import 'package:global_configuration/global_configuration.dart';
 import 'package:meditation/screens/calendar/calendar.dart';
 import 'package:meditation/screens/calendar/calendarPm.dart';
 import 'package:provider/provider.dart';
+import 'package:meditation/chat/chatPage.dart';
 import 'package:meditation/screens/details.dart';
 import 'package:meditation/screens/reminder/alarm.dart';
 import 'package:meditation/screens/setting.dart';
@@ -248,13 +249,13 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
       initialVideoId: 'FkZ8tucHCto',
       flags: YoutubePlayerFlags(autoPlay: true, mute: false, loop: true),
     );
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Container(
-        // height: MediaQuery.of(context).size.height * .28
-        // height: 200,
-        width: MediaQuery.of(context).size.width - 40,
-        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+    return Container(
+      // height: MediaQuery.of(context).size.height * .28
+      // height: 200,
+      width: MediaQuery.of(context).size.width - 40,
+      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15.0),
         child: YoutubePlayer(
           controller: _controller,
           showVideoProgressIndicator: true,
@@ -283,17 +284,12 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
           ]),
         ));
     Widget _progress = Alarm();
-    // Widget _explore = Explore();
+     
     Widget _setting = Setting();
-    pages = [
-      _page1,
-      ChangeNotifierProvider(
+    pages = [_page1, ChangeNotifierProvider(
         create: (context) => CalendarPm(),
         child: CalendarCustomWidget(),
-      ),
-      _progress,
-      _setting
-    ];
+      ), _progress,Chat(), _setting,];
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -343,7 +339,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
           Icon(Icons.home, color: iconColor),
           Icon(Icons.calendar_today, color: iconColor),
           Icon(Icons.alarm, color: iconColor),
-          // Icon(Icons.explore, color: iconColor),
+          Icon(Icons.chat, color: iconColor),
           Icon(Icons.settings, color: iconColor),
         ],
         onTap: (int index) {

@@ -11,12 +11,14 @@ class SecondHandPainter extends CustomPainter {
   SecondHandPainter({this.seconds})
       : secondHandPaint = new Paint(),
         secondHandPointsPaint = new Paint() {
-    secondHandPaint.color = Color(0xffff0764);
+    secondHandPaint.color = Colors.deepPurple;
+    // Color(0xffff0764);
     secondHandPaint.style = PaintingStyle.stroke;
     secondHandPaint.strokeWidth = 4.0;
     secondHandPaint.strokeCap = StrokeCap.round;
 
-    secondHandPointsPaint.color = Color(0xffff0764);
+    secondHandPointsPaint.color = Colors.deepPurple;
+    // Color(0xffff0764);
     secondHandPointsPaint.style = PaintingStyle.fill;
   }
 
