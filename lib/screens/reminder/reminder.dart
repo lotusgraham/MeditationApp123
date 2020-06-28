@@ -5,14 +5,13 @@ class Reminder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 40),
+          padding: EdgeInsets.symmetric(horizontal: 56),
           child: Clock(),
         ),
         SizedBox(
-          height: 40,
+          height: 24,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
