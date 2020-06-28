@@ -39,6 +39,8 @@ linked_*.ds
 unlinked.ds
 unlinked_spec.ds
 
+# android related
+android/.gradle/*
 
 # Web related
 lib/generated_plugin_registrant.dart
