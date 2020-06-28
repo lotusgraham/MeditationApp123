@@ -19,11 +19,14 @@ import io.flutter.plugins.googlesignin.GoogleSignInPlugin;
 import vn.hunghd.flutter.plugins.imagecropper.ImageCropperPlugin;
 import io.flutter.plugins.imagepicker.ImagePickerPlugin;
 import io.flutter.plugins.pathprovider.PathProviderPlugin;
+import flutter.plugins.screen.screen.ScreenPlugin;
 import io.flutter.plugins.share.SharePlugin;
 import io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin;
 import com.tekartik.sqflite.SqflitePlugin;
 import io.flutter.plugins.urllauncher.UrlLauncherPlugin;
 import io.flutter.plugins.videoplayer.VideoPlayerPlugin;
+import creativecreatorormaybenot.wakelock.WakelockPlugin;
+import io.flutter.plugins.webviewflutter.WebViewFlutterPlugin;
 
 /**
  * Generated file. Do not edit.
@@ -51,11 +54,14 @@ public final class GeneratedPluginRegistrant {
     ImageCropperPlugin.registerWith(registry.registrarFor("vn.hunghd.flutter.plugins.imagecropper.ImageCropperPlugin"));
     ImagePickerPlugin.registerWith(registry.registrarFor("io.flutter.plugins.imagepicker.ImagePickerPlugin"));
     PathProviderPlugin.registerWith(registry.registrarFor("io.flutter.plugins.pathprovider.PathProviderPlugin"));
+    ScreenPlugin.registerWith(registry.registrarFor("flutter.plugins.screen.screen.ScreenPlugin"));
     SharePlugin.registerWith(registry.registrarFor("io.flutter.plugins.share.SharePlugin"));
     SharedPreferencesPlugin.registerWith(registry.registrarFor("io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin"));
     SqflitePlugin.registerWith(registry.registrarFor("com.tekartik.sqflite.SqflitePlugin"));
     UrlLauncherPlugin.registerWith(registry.registrarFor("io.flutter.plugins.urllauncher.UrlLauncherPlugin"));
     VideoPlayerPlugin.registerWith(registry.registrarFor("io.flutter.plugins.videoplayer.VideoPlayerPlugin"));
+    WakelockPlugin.registerWith(registry.registrarFor("creativecreatorormaybenot.wakelock.WakelockPlugin"));
+    WebViewFlutterPlugin.registerWith(registry.registrarFor("io.flutter.plugins.webviewflutter.WebViewFlutterPlugin"));
   }
 
   private static boolean alreadyRegisteredWith(PluginRegistry registry) {
