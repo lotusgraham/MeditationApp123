@@ -47,6 +47,10 @@ dependencies:
   youtube_player_flutter: 
   syncfusion_flutter_calendar:
   smooth_page_indicator: ^0.1.5
+<<<<<<< HEAD
+=======
+  
+>>>>>>> ebcde630c234cc5af12060f49c5e10b6467a26b6
 
   
 dev_dependencies:
