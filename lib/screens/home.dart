@@ -5,7 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:meditation/screens/calendar.dart';
+import 'package:meditation/screens/calendar/calendar.dart';
+import 'package:meditation/screens/calendar/calendarPm.dart';
+import 'package:provider/provider.dart';
 import 'package:meditation/screens/details.dart';
 import 'package:meditation/screens/reminder/alarm.dart';
 import 'package:meditation/screens/setting.dart';
@@ -283,7 +285,15 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
     Widget _progress = Alarm();
     // Widget _explore = Explore();
     Widget _setting = Setting();
-    pages = [_page1, CalendarCustomWidget(), _progress, _setting];
+    pages = [
+      _page1,
+      ChangeNotifierProvider(
+        create: (context) => CalendarPm(),
+        child: CalendarCustomWidget(),
+      ),
+      _progress,
+      _setting
+    ];
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
