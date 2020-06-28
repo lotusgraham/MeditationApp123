@@ -13,6 +13,7 @@ import 'package:meditation/screens/setting.dart';
 import 'package:meditation/screens/stories.dart';
 import 'package:meditation/util/color.dart';
 import 'package:flutter/services.dart';
+import 'package:meditation/util/gardient_animation.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -178,8 +179,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
       top: -10,
       height: 270,
       width: MediaQuery.of(context).size.width,
-      child: Container(
-        color: primaryColor,
+      child: GradientAnimation(
         child: Padding(
           padding: EdgeInsets.all(20.0),
           child: Row(
@@ -282,9 +282,9 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
           ]),
         ));
     Widget _progress = Alarm();
-     
+
     Widget _setting = Setting();
-    pages = [_page1, CalendarCustomWidget(), _progress,Chat(), _setting];
+    pages = [_page1, CalendarCustomWidget(), _progress, Chat(), _setting];
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
