@@ -148,7 +148,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               onTap: () async {
-                Provider.of<AuthProvider>(context)
+                Provider.of<AuthProvider>(context, listen: false)
                     .handleGoogleSignIn()
                     .then((value) {
                   Navigator.pushReplacement(
