@@ -54,6 +54,9 @@ app.*.map.json
 
 android/key.properties
 
+android/.gradle
+ios
+
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
