@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meditation/models/splash-model.dart';
-import 'package:meditation/screens/auth/login.dart';
+import 'package:meditation/screens/auth/login/login.dart';
 import 'package:meditation/util/color.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../util/color.dart';
-import 'auth/login.dart';
+import 'auth/login/login.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
