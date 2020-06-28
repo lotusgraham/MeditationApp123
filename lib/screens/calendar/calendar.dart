@@ -31,7 +31,7 @@ class _CalendarCustomWidgetState extends State<CalendarCustomWidget> {
               return astart.compareTo(bstart);
             });
             return SimpleDialog(
-              useMaterialBorderRadius: true,
+              // useMaterialBorderRadius: true,
               children: l.map((v) {
                 DateTime dtstart = v.dtstart;
                 DateTime dtend = v.dtend;
