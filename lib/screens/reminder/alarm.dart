@@ -1,10 +1,14 @@
 import 'dart:convert';
+import 'dart:math';
+import 'package:meditation/enums/gradient_animation_enum.dart';
+import 'package:meditation/util/gardient_animation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 // import 'package:meditation/screens/reminder/reminder-stats.dart';
 import 'package:meditation/screens/reminder/reminder.dart';
 import 'package:meditation/util/color.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:simple_animations/simple_animations.dart';
 
 Time timeofalarm;
 var showtime;
@@ -149,131 +153,252 @@ class _AlarmState extends State<Alarm> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        bottom: true,
-        child: Scaffold(
-            body: Column(
-          children: <Widget>[
-            AppBar(
-                backgroundColor: Colors.transparent,
-                titleSpacing: 10.0,
-                automaticallyImplyLeading: false,
-                title: RichText(
-                  text: TextSpan(children: [
-                    TextSpan(text: "\n"),
-                    TextSpan(
-                      text: "Set Reminder",
-                      style: TextStyle(
-                          color: Color(0xFF1A1A1A),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700),
-                    ),
-                    TextSpan(text: "\n"),
-                    TextSpan(
-                      text:
-                          "The people who set reminder achieve their goals twice as fast.",
-                      style: TextStyle(color: Color(0xFF1A1A1A), fontSize: 12),
-                    )
-                  ]),
-                ),
-                elevation: 0.0),
-            SizedBox(
-              height: 16,
-            ),
-            Reminder(),
-            // SizedBox(
-            //   height: MediaQuery.of(context).size.height * .04,
-            // ),
-            SizedBox(
-              height: 16,
-            ),
-            multipleAlarm != null
-                ? Flexible(
-                    child: ListView.builder(
-                      padding: EdgeInsets.symmetric(horizontal: 32),
-                      shrinkWrap: true,
-                      physics: ClampingScrollPhysics(),
-                      itemCount: multipleAlarm.length,
-                      itemBuilder: (context, index) {
-                        var alarm = jsonDecode(multipleAlarm[index]);
+    return Scaffold(
+        body: Stack(
+      children: <Widget>[
+        Positioned.fill(child: BackGroundAnimation(child: null)),
+        onBottom(AnimatedWave(
+          height: 200,
+          speed: 1.0,
+        )),
+        onBottom(AnimatedWave(
+          height: 140,
+          speed: 0.9,
+          offset: pi,
+        )),
+        onBottom(AnimatedWave(
+          height: 240,
+          speed: 1.2,
+          offset: pi / 2,
+        )),
+        SafeArea(
+          child: Column(
+            children: <Widget>[
+              AppBar(
+                  backgroundColor: Colors.transparent,
+                  titleSpacing: 10.0,
+                  automaticallyImplyLeading: false,
+                  title: RichText(
+                    text: TextSpan(children: [
+                      TextSpan(text: "\n"),
+                      TextSpan(
+                        text: "Set Reminder",
+                        style: TextStyle(
+                            color: Color(0xFF1A1A1A),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      TextSpan(text: "\n"),
+                      TextSpan(
+                        text:
+                            "The people who set reminder achieve their goals twice as fast.",
+                        style:
+                            TextStyle(color: Color(0xFF1A1A1A), fontSize: 12),
+                      )
+                    ]),
+                  ),
+                  elevation: 0.0),
+              SizedBox(
+                height: 16,
+              ),
+              Reminder(),
+              // SizedBox(
+              //   height: MediaQuery.of(context).size.height * .04,
+              // ),
+              SizedBox(
+                height: 16,
+              ),
+              multipleAlarm != null
+                  ? Flexible(
+                      child: ListView.builder(
+                        padding: EdgeInsets.symmetric(horizontal: 32),
+                        shrinkWrap: true,
+                        physics: ClampingScrollPhysics(),
+                        itemCount: multipleAlarm.length,
+                        itemBuilder: (context, index) {
+                          var alarm = jsonDecode(multipleAlarm[index]);
 
-                        return Dismissible(
-                          secondaryBackground: Container(
+                          return Dismissible(
+                            secondaryBackground: Container(
+                                margin: EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    // color: primaryColor,
+                                    gradient: LinearGradient(colors: [
+                                      primaryColor,
+                                      Colors.pink[500],
+                                    ])),
+                                padding: EdgeInsets.only(right: 20),
+                                alignment: Alignment.centerRight,
+                                child: Icon(
+                                  Icons.delete,
+                                  color: Colors.white,
+                                )),
+                            key: UniqueKey(),
+                            direction: DismissDirection.endToStart,
+                            onDismissed: (direction) async {
+                              SharedPreferences myPrefs =
+                                  await SharedPreferences.getInstance();
+
+                              await flutterLocalNotificationsPlugin.cancel(
+                                  jsonDecode(multipleAlarm[index])['id']);
+                              multipleAlarm.removeAt(index);
+                              myPrefs.setStringList(
+                                  "multipleAlarm", multipleAlarm);
+
+                              setState(() {
+                                multipleAlarm =
+                                    myPrefs.getStringList("multipleAlarm");
+                              });
+
+                              snackbar(
+                                  "Reminder for ${alarm['time']} is removed !");
+                            },
+                            background: Container(color: primaryColor),
+                            child: Container(
                               margin: EdgeInsets.all(4),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  // color: primaryColor,
-                                  gradient: LinearGradient(colors: [
-                                    primaryColor,
-                                    Colors.pink[500],
-                                  ])),
-                              padding: EdgeInsets.only(right: 20),
-                              alignment: Alignment.centerRight,
-                              child: Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                              )),
-                          key: UniqueKey(),
-                          direction: DismissDirection.endToStart,
-                          onDismissed: (direction) async {
-                            SharedPreferences myPrefs =
-                                await SharedPreferences.getInstance();
-
-                            await flutterLocalNotificationsPlugin
-                                .cancel(jsonDecode(multipleAlarm[index])['id']);
-                            multipleAlarm.removeAt(index);
-                            myPrefs.setStringList(
-                                "multipleAlarm", multipleAlarm);
-
-                            setState(() {
-                              multipleAlarm =
-                                  myPrefs.getStringList("multipleAlarm");
-                            });
-
-                            snackbar(
-                                "Reminder for ${alarm['time']} is removed !");
-                          },
-                          background: Container(color: primaryColor),
-                          child: Container(
-                            margin: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                gradient: LinearGradient(
-                                    colors: [primaryColor, Colors.blue])),
-                            child: ListTile(
-                              title: Text(
-                                "${alarm['time']}",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.w700),
+                                  gradient: LinearGradient(
+                                      colors: [primaryColor, Colors.blue])),
+                              child: ListTile(
+                                title: Text(
+                                  "${alarm['time']}",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.w700),
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                  )
-                : SizedBox(),
-            Container(
-              padding: EdgeInsets.only(top: 16, right: 16),
-              alignment: Alignment.bottomRight,
-              child: FloatingActionButton.extended(
-                heroTag: UniqueKey,
-                label: Icon(
-                  Icons.add,
-                  color: Color(0xff2d386b),
-                  size: 20,
+                          );
+                        },
+                      ),
+                    )
+                  : SizedBox(),
+              Container(
+                padding: EdgeInsets.only(top: 16, right: 16),
+                alignment: Alignment.bottomRight,
+                child: FloatingActionButton.extended(
+                  heroTag: UniqueKey,
+                  label: Icon(
+                    Icons.add,
+                    color: Color(0xff2d386b),
+                    size: 20,
+                  ),
+                  backgroundColor: Colors.white,
+                  onPressed: () => selecttime(context),
                 ),
-                backgroundColor: Colors.white,
-                onPressed: () => selecttime(context),
               ),
-            ),
-            SizedBox(
-              height: 40,
-            )
-          ],
-        )));
+              SizedBox(
+                height: 40,
+              ),
+            ],
+          ),
+        ),
+      ],
+    ));
+  }
+
+  onBottom(Widget child) => Positioned.fill(
+          child: Align(
+        alignment: Alignment.bottomCenter,
+        child: child,
+      ));
+}
+
+class BackGroundAnimation extends StatelessWidget {
+  const BackGroundAnimation({Key key, @required this.child}) : super(key: key);
+  final Widget child;
+  @override
+  Widget build(BuildContext context) {
+    final _tween = MultiTween()
+      ..add(
+        GradientAnimationEnum.left,
+        ColorTween(begin: Colors.lightBlue[200], end: Colors.deepPurple[200]),
+      )
+      ..add(
+        GradientAnimationEnum.right,
+        ColorTween(begin: Colors.indigo[200], end: Colors.lightBlue[200]),
+      );
+
+    return CustomAnimation(
+      control: CustomAnimationControl.MIRROR,
+      duration: const Duration(seconds: 5),
+      tween: _tween,
+      child: child,
+      builder: (context, child, value) {
+        return DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              value.get(GradientAnimationEnum.left),
+              value.get(GradientAnimationEnum.right),
+            ]),
+          ),
+          child: child,
+        );
+      },
+    );
+  }
+}
+
+class AnimatedWave extends StatelessWidget {
+  final double height;
+  final double speed;
+  final double offset;
+
+  AnimatedWave({this.height, this.speed, this.offset = 0.0});
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      return Container(
+        height: height,
+        width: constraints.biggest.width,
+        child: ControlledAnimation(
+            playback: Playback.LOOP,
+            duration: Duration(milliseconds: (5000 / speed).round()),
+            tween: Tween(begin: 0.0, end: 2 * pi),
+            builder: (context, value) {
+              return CustomPaint(
+                foregroundPainter: CurvePainter(value + offset),
+              );
+            }),
+      );
+    });
+  }
+}
+
+class CurvePainter extends CustomPainter {
+  final double value;
+
+  CurvePainter(this.value);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final white = Paint()..color = Colors.indigo[300].withAlpha(50);
+    final path = Path();
+
+    final y1 = sin(value);
+    final y2 = sin(value + pi / 2);
+    final y3 = sin(value + pi);
+
+    final startPointY = size.height * (0.5 + 0.4 * y1);
+    final controlPointY = size.height * (0.5 + 0.4 * y2);
+    final endPointY = size.height * (0.5 + 0.4 * y3);
+
+    path.moveTo(size.width * 0, startPointY);
+    path.quadraticBezierTo(
+        size.width * 0.5, controlPointY, size.width, endPointY);
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+    path.close();
+    canvas.drawPath(path, white);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
   }
 }

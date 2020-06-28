@@ -486,6 +486,8 @@ PODS:
   - PromisesObjC (1.2.9)
   - Protobuf (3.12.0)
   - Reachability (3.2)
+  - screen (0.0.1):
+    - Flutter
   - share (0.0.1):
     - Flutter
   - shared_preferences (0.0.1):
@@ -507,6 +509,10 @@ PODS:
   - video_player (0.0.1):
     - Flutter
   - video_player_web (0.0.1):
+    - Flutter
+  - wakelock (0.0.1):
+    - Flutter
+  - webview_flutter (0.0.1):
     - Flutter
 
 DEPENDENCIES:
@@ -539,6 +545,7 @@ DEPENDENCIES:
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - path_provider_linux (from `.symlinks/plugins/path_provider_linux/ios`)
   - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
+  - screen (from `.symlinks/plugins/screen/ios`)
   - share (from `.symlinks/plugins/share/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - shared_preferences_macos (from `.symlinks/plugins/shared_preferences_macos/ios`)
@@ -549,6 +556,8 @@ DEPENDENCIES:
   - url_launcher_web (from `.symlinks/plugins/url_launcher_web/ios`)
   - video_player (from `.symlinks/plugins/video_player/ios`)
   - video_player_web (from `.symlinks/plugins/video_player_web/ios`)
+  - wakelock (from `.symlinks/plugins/wakelock/ios`)
+  - webview_flutter (from `.symlinks/plugins/webview_flutter/ios`)
 
 SPEC REPOS:
   trunk:
@@ -641,6 +650,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_linux/ios"
   path_provider_macos:
     :path: ".symlinks/plugins/path_provider_macos/ios"
+  screen:
+    :path: ".symlinks/plugins/screen/ios"
   share:
     :path: ".symlinks/plugins/share/ios"
   shared_preferences:
@@ -661,6 +672,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/video_player/ios"
   video_player_web:
     :path: ".symlinks/plugins/video_player_web/ios"
+  wakelock:
+    :path: ".symlinks/plugins/wakelock/ios"
+  webview_flutter:
+    :path: ".symlinks/plugins/webview_flutter/ios"
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -723,6 +738,7 @@ SPEC CHECKSUMS:
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  screen: abd91ca7bf3426e1cc3646d27e9b2358d6bf07b0
   share: 0b2c3e82132f5888bccca3351c504d0003b3b410
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
@@ -734,6 +750,8 @@ SPEC CHECKSUMS:
   url_launcher_web: e5527357f037c87560776e36436bf2b0288b965c
   video_player: 9cc823b1d9da7e8427ee591e8438bfbcde500e6e
   video_player_web: da8cadb8274ed4f8dbee8d7171b420dedd437ce7
+  wakelock: 0d4a70faf8950410735e3f61fb15d517c8a6efc4
+  webview_flutter: d2b4d6c66968ad042ad94cbb791f5b72b4678a96
 
 PODFILE CHECKSUM: 5c100fda342008649d169571f1f62ba79a995360
 
