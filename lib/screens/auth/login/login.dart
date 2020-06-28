@@ -15,17 +15,8 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-class LoginData {
-  String email = '';
-  String password = '';
-}
-
 class _LoginState extends State<Login> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  final _formKey = GlobalKey<FormState>();
-  LoginData _data = new LoginData();
-
-  AuthProvider _provider;
 
   // var twitterLogin = new TwitterLogin(
   //   consumerKey: GlobalConfiguration().getString("twitterConsumerKey"),
@@ -34,7 +25,6 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<AuthProvider>(context);
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
@@ -158,8 +148,14 @@ class _LoginState extends State<Login> {
                 ),
               ),
               onTap: () async {
-                await Navigator.pushReplacement(
-                    context, CupertinoPageRoute(builder: (context) => Home()));
+                Provider.of<AuthProvider>(context)
+                    .handleGoogleSignIn()
+                    .then((value) {
+                  Navigator.pushReplacement(
+                    context,
+                    CupertinoPageRoute(builder: (context) => Home()),
+                  );
+                });
               },
             ),
 
