@@ -15,7 +15,7 @@ class CalendarPm extends ChangeNotifier {
   DateTime date;
   CalendarPm() {
     this.loadData();
-    this.view = CalendarView.day;
+    this.view = CalendarView.month;
     this.controller = CalendarController();
   }
 
@@ -33,18 +33,7 @@ class CalendarPm extends ChangeNotifier {
 
   onViewChange(ViewChangedDetails details) {}
 
-  handleTap(CalendarTapDetails details) {
-    print(details.date);
-    if (details.date != null) {
-      this.view = CalendarView.day;
-      this.date = details.date;
-      this.controller.selectedDate = details.date;
-      _notify();
-    } else {
-      this.view = CalendarView.month;
-      _notify();
-    }
-  }
+  
 
   _notify() {
     if (this.hasListeners) {
