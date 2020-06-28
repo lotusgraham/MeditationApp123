@@ -1,0 +1,1 @@
+enum GradientAnimationEnum { left, right }
