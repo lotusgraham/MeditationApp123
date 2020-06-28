@@ -39,6 +39,8 @@ linked_*.ds
 unlinked.ds
 unlinked_spec.ds
 
+# android related
+android/.gradle/*
 
 # Web related
 lib/generated_plugin_registrant.dart
@@ -53,6 +55,9 @@ app.*.map.json
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
 android/key.properties
+
+android/.gradle
+ios
 
 
 # iOS/XCode related
