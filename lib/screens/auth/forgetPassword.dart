@@ -22,55 +22,61 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              height: MediaQuery.of(context).size.height,
-              child: Stack(
-                children: <Widget>[
-                  backgroundImageWidget(),
-                  Positioned(
-                    top: 20,
-                    width: MediaQuery.of(context).size.width,
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          FadeAnimation(
-                              1.5,
-                              Text(
-                                "Forget Password",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 30),
-                              )),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          FadeAnimation(
-                              1.7,
-                              Center(
-                                child: Image.asset('asset/img/logoWhite.png',
-                                    height: 150),
-                              )),
-                          signupFormWidget(),
-                        ],
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pop(context, false);
+        return Future.value(false);
+      },
+      child: Scaffold(
+        key: _scaffoldKey,
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                height: MediaQuery.of(context).size.height,
+                child: Stack(
+                  children: <Widget>[
+                    backgroundImageWidget(),
+                    Positioned(
+                      top: 20,
+                      width: MediaQuery.of(context).size.width,
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            FadeAnimation(
+                                1.5,
+                                Text(
+                                  "Forget Password",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30),
+                                )),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            FadeAnimation(
+                                1.7,
+                                Center(
+                                  child: Image.asset('asset/img/logoWhite.png',
+                                      height: 150),
+                                )),
+                            signupFormWidget(),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
