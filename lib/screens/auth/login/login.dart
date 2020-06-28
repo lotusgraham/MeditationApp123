@@ -9,6 +9,7 @@ import '../../../util/color.dart';
 import '../../home.dart';
 import '../signup.dart';
 import 'widgets/login_form.dart';
+import '../../../util/gardient_animation.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -92,13 +93,11 @@ class _LoginState extends State<Login> {
       height: 400,
       width: MediaQuery.of(context).size.width,
       child: FadeAnimation(
-          1,
-          Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('asset/img/loginbackground.jpg'),
-                    fit: BoxFit.fill)),
-          )),
+        1,
+        GradientAnimation(
+          child: Container(),
+        ),
+      ),
     );
   }
 

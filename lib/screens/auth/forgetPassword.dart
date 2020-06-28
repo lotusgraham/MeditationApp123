@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:meditation/util/animation.dart';
 import 'package:meditation/util/color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:meditation/util/gardient_animation.dart';
 
 class ForgetPassword extends StatefulWidget {
   @override
@@ -88,13 +89,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       height: 400,
       width: MediaQuery.of(context).size.width,
       child: FadeAnimation(
-          1,
-          Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('asset/img/loginbackground.jpg'),
-                    fit: BoxFit.fill)),
-          )),
+        1,
+        GradientAnimation(
+          child: Container(),
+        ),
+      ),
     );
   }
 

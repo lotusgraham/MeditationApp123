@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../util/animation.dart';
 import '../../util/color.dart';
+import '../../util/gardient_animation.dart';
 import '../home.dart';
 import '../termsCondition.dart';
 
@@ -91,13 +92,11 @@ class _SignupState extends State<Signup> {
       height: 400,
       width: MediaQuery.of(context).size.width,
       child: FadeAnimation(
-          1,
-          Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('asset/img/loginbackground.jpg'),
-                    fit: BoxFit.fill)),
-          )),
+        1,
+        GradientAnimation(
+          child: Container(),
+        ),
+      ),
     );
   }
 
