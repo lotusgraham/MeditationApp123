@@ -269,7 +269,7 @@ class _LoginState extends State<Login> {
         Container(
           child: InkWell(
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                   context, CupertinoPageRoute(builder: (context) => Home()));
             },
             child: Container(
@@ -308,7 +308,7 @@ class _LoginState extends State<Login> {
                 final FirebaseUser currentUser = await _handleGoogleSignIn();
                 print(currentUser);
                 await _setDataUser(currentUser);
-                await Navigator.push(
+                await Navigator.pushReplacement(
                     context, CupertinoPageRoute(builder: (context) => Home()));
               },
             ),
