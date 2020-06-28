@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:meditation/screens/home.dart';
+import 'package:meditation/screens/home/home.dart';
 import 'package:meditation/screens/payment/subscription.dart';
 import 'package:meditation/util/color.dart';
 import 'package:http/http.dart' as http;
@@ -119,7 +119,7 @@ class _ProgressState extends State<Progress> {
     Navigator.pushReplacement(
       context,
       CupertinoPageRoute(builder: (context) {
-        return Home(
+        return HomeWrapper(
           isPaymentSuccess: true,
           plan: plan,
         );

@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:meditation/screens/home/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../util/animation.dart';
 import '../../util/color.dart';
 import '../../util/gardient_animation.dart';
-import '../home.dart';
 import '../termsCondition.dart';
 
 class Signup extends StatefulWidget {
@@ -265,7 +265,7 @@ class _SignupState extends State<Signup> {
                             Navigator.pushReplacement(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (context) => Home()));
+                                    builder: (context) => HomeWrapper()));
                           }
                         },
                         child: Icon(Icons.arrow_forward),

@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:meditation/screens/home/home.dart';
 import 'package:meditation/util/animation.dart';
 import 'package:meditation/util/color.dart';
 import 'package:provider/provider.dart';
-
-import '../../../home.dart';
 import '../../forgetPassword.dart';
 import '../../../../provider/auth_provider.dart';
 
@@ -160,7 +159,7 @@ class _LoginFormState extends State<LoginForm> {
                                   (value) => Navigator.pushReplacement(
                                     context,
                                     CupertinoPageRoute(
-                                      builder: (context) => Home(),
+                                      builder: (context) => HomeWrapper(),
                                     ),
                                   ),
                                 );
