@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meditation/screens/auth/login.dart';
+import 'package:meditation/screens/auth/login/login.dart';
 import 'package:meditation/screens/edit-profile.dart';
 import 'package:meditation/screens/invite-firends.dart';
 import 'package:firebase_auth/firebase_auth.dart';
