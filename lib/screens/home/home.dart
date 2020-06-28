@@ -355,7 +355,10 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
       child: Scaffold(
         body: Stack(
           children: <Widget>[
-            pages.elementAt(homePm.selectedIndex),
+            IndexedStack(
+              index: homePm.selectedIndex,
+              children: pages,
+            ),
             Align(
               alignment: Alignment.bottomCenter,
               child: buildBottomNavigationBar(),
