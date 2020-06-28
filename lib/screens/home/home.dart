@@ -9,7 +9,7 @@ import 'package:meditation/screens/calendar/calendarPm.dart';
 import 'package:meditation/screens/home/homePm.dart';
 import 'package:meditation/util/onWillPop.dart';
 import 'package:provider/provider.dart';
-import 'package:meditation/chat/chatPage.dart';
+import 'package:meditation/chat/chatfire.dart';
 import 'package:meditation/screens/reminder/alarm.dart';
 import 'package:meditation/screens/setting.dart';
 import 'package:meditation/util/color.dart';
