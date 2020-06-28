@@ -1,12 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:meditation/util/animation.dart';
-import 'package:meditation/util/color.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:meditation/screens/home.dart';
+import 'package:meditation/screens/home/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../util/animation.dart';
+import '../../util/color.dart';
+import '../../util/gardient_animation.dart';
+import '../termsCondition.dart';
 
 class Signup extends StatefulWidget {
   @override
@@ -21,9 +23,9 @@ class _LoginData {
 
 class _SignupState extends State<Signup> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
-  _LoginData _data = new _LoginData();
+  _LoginData _data = _LoginData();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,19 +72,6 @@ class _SignupState extends State<Signup> {
                           SizedBox(
                             height: 20,
                           ),
-                          FadeAnimation(
-                              1.9,
-                              const Text(
-                                "or login with",
-                                style: TextStyle(fontSize: 14),
-                              )),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          socialLoginWidget(),
-                          const SizedBox(
-                            height: 15,
-                          ),
                         ],
                       ),
                     ),
@@ -97,19 +86,17 @@ class _SignupState extends State<Signup> {
   }
 
   ///Background image and logo
-   Widget backgroundImageWidget() {
+  Widget backgroundImageWidget() {
     return Positioned(
       top: -40,
       height: 400,
       width: MediaQuery.of(context).size.width,
       child: FadeAnimation(
-          1,
-          Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('asset/img/loginbackground.jpg'),
-                    fit: BoxFit.fill)),
-          )),
+        1,
+        GradientAnimation(
+          child: Container(),
+        ),
+      ),
     );
   }
 
@@ -249,9 +236,10 @@ class _SignupState extends State<Signup> {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) => Signup()));
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) => TermsAndCondition()),
+                            );
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -277,7 +265,7 @@ class _SignupState extends State<Signup> {
                             Navigator.pushReplacement(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (context) => Home()));
+                                    builder: (context) => HomeWrapper()));
                           }
                         },
                         child: Icon(Icons.arrow_forward),
@@ -287,42 +275,6 @@ class _SignupState extends State<Signup> {
             ),
           ),
         ));
-  }
-
-  Widget socialLoginWidget() {
-    return FadeAnimation(
-      1.9,
-      Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Material(
-              child: SvgPicture.asset(
-                'asset/img/social-icon/google.svg',
-                semanticsLabel: 'Acme Logo',
-                height: 35,
-                width: 35,
-              ),
-            ),
-            SizedBox(width: 10),
-            SvgPicture.asset(
-              'asset/img/social-icon/facebook.svg',
-              semanticsLabel: 'Acme Logo',
-              height: 35,
-              width: 35,
-            ),
-            SizedBox(width: 10),
-            SvgPicture.asset(
-              'asset/img/social-icon/twitter.svg',
-              semanticsLabel: 'Acme Logo',
-              height: 35,
-              width: 35,
-            ),
-            SizedBox(width: 10),
-          ],
-        ),
-      ),
-    );
   }
 
   Future register(_data) async {

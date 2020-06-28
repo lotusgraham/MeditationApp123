@@ -190,19 +190,23 @@ class _AlarmState extends State<Alarm> {
             multipleAlarm != null
                 ? Flexible(
                     child: ListView.builder(
-                      padding: EdgeInsets.all(16),
+                      padding: EdgeInsets.symmetric(horizontal: 32),
                       shrinkWrap: true,
-                      physics: ScrollPhysics(),
+                      physics: ClampingScrollPhysics(),
                       itemCount: multipleAlarm.length,
                       itemBuilder: (context, index) {
                         var alarm = jsonDecode(multipleAlarm[index]);
 
                         return Dismissible(
                           secondaryBackground: Container(
+                              margin: EdgeInsets.all(4),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                color: primaryColor,
-                              ),
+                                  borderRadius: BorderRadius.circular(8),
+                                  // color: primaryColor,
+                                  gradient: LinearGradient(colors: [
+                                    primaryColor,
+                                    Colors.pink[500],
+                                  ])),
                               padding: EdgeInsets.only(right: 20),
                               alignment: Alignment.centerRight,
                               child: Icon(
@@ -230,13 +234,18 @@ class _AlarmState extends State<Alarm> {
                                 "Reminder for ${alarm['time']} is removed !");
                           },
                           background: Container(color: primaryColor),
-                          child: Card(
+                          child: Container(
+                            margin: EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                gradient: LinearGradient(
+                                    colors: [primaryColor, Colors.blue])),
                             child: ListTile(
                               title: Text(
                                 "${alarm['time']}",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    color: Color(0xff2d386b),
+                                    color: Colors.white,
                                     fontSize: 28,
                                     fontWeight: FontWeight.w700),
                               ),
@@ -248,7 +257,7 @@ class _AlarmState extends State<Alarm> {
                   )
                 : SizedBox(),
             Container(
-              padding: EdgeInsets.only(right: 20),
+              padding: EdgeInsets.only(top: 16, right: 16),
               alignment: Alignment.bottomRight,
               child: FloatingActionButton.extended(
                 heroTag: UniqueKey,
@@ -262,7 +271,7 @@ class _AlarmState extends State<Alarm> {
               ),
             ),
             SizedBox(
-              height: 70,
+              height: 40,
             )
           ],
         )));
