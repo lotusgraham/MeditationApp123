@@ -23,28 +23,25 @@ class EditProfile extends StatefulWidget {
   _EditProfileState createState() => _EditProfileState();
 }
 
-final TextEditingController phnctlr = new TextEditingController();
-final TextEditingController emailctlr = new TextEditingController();
-ScrollController scrollController = ScrollController();
-ScrollController horizontalController = ScrollController();
-int childCount = 10;
-
-int verticalPreviousIndex;
-int horizontalPreviousIndex;
-double verticalChildExtent = 300.0;
-double horizontalChildExtent = 100.0;
-
 class _EditProfileState extends State<EditProfile> {
   var uploadedFileURL;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
+  final TextEditingController phnctlr = new TextEditingController();
+  final TextEditingController emailctlr = new TextEditingController();
   File _image;
+  ScrollController scrollController = ScrollController();
+  ScrollController horizontalController = ScrollController();
+  int childCount = 10;
 
+  int verticalPreviousIndex;
+  int horizontalPreviousIndex;
+  double verticalChildExtent = 300.0;
+  double horizontalChildExtent = 100.0;
   @override
   void initState() {
     // todo: implement initState
-    super.initState();
     currentuser();
+    super.initState();
   }
 
   @override
@@ -53,6 +50,7 @@ class _EditProfileState extends State<EditProfile> {
     // widget tree.
     phnctlr.dispose();
     emailctlr.dispose();
+    edit = false;
     super.dispose();
   }
 
@@ -281,13 +279,93 @@ class _EditProfileState extends State<EditProfile> {
           padding: const EdgeInsets.only(top: 90.0),
           child: FloatingActionButton(
             elevation: 10,
-            child: BackButton(
-              color: Colors.black,
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
             ),
             backgroundColor: Colors.white38,
-            onPressed: () {
-              dispose();
-              Navigator.pop(context);
+            onPressed: () async {
+              //show dialog to make sure user want to leave the page with unsave changes
+              if (edit == true) {
+                bool leaveStat = await showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(20.0)), //this right here
+                        child: Container(
+                          height: 200,
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Center(
+                                  child: Text("Unsaved Changes",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline6),
+                                ),
+                                Expanded(
+                                  child: Center(
+                                    child: Text(
+                                        "Changes you made may not be saved.",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .subtitle1),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      RaisedButton(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
+                                        onPressed: () {
+                                          Navigator.pop(context, false);
+                                        },
+                                        child: Text(
+                                          "Cancel",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        color: primaryColor,
+                                      ),
+                                      RaisedButton(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
+                                        onPressed: () {
+                                          Navigator.pop(context, true);
+                                        },
+                                        child: Text(
+                                          "Leave",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        color: primaryColor,
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    });
+
+                if (leaveStat == true) {
+                  // dispose();
+                  Navigator.pop(context);
+                }
+              } else {
+                // dispose();
+                Navigator.pop(context);
+              }
             },
           ),
         ),
@@ -684,280 +762,7 @@ class _EditProfileState extends State<EditProfile> {
                         ),
                       ),
                     ],
-                  )
-                  // child: ListView(
-                  //   shrinkWrap: true,
-                  //   children: <Widget>[
-                  //     buildProfile(context),
-                  //     const SizedBox(height: 20),
-                  //     Container(
-                  //       margin: const EdgeInsets.symmetric(horizontal: 30),
-                  //       decoration: BoxDecoration(
-                  //         color: Colors.white,
-                  //         borderRadius: BorderRadius.circular(5.0),
-                  //       ),
-                  //       child: Form(
-                  //         child: Column(
-                  //           children: <Widget>[
-                  //             ListTile(
-                  //                 title: Text("User information"),
-                  //                 trailing: !edit
-                  //                     ? FlatButton.icon(
-                  //                         splashColor: Colors.blue,
-                  //                         icon: Icon(
-                  //                           Icons.edit,
-                  //                           color: primaryColor,
-                  //                         ),
-                  //                         label: Text("edit"),
-                  //                         onPressed: () {
-                  //                           setState(() {
-                  //                             edit = true;
-                  //                           });
-                  //                         },
-                  //                       )
-                  //                     : SizedBox()),
-                  //             Divider(),
-                  //             edit
-                  //                 ? ListTile(
-                  //                     title: TextFormField(
-                  //                       style: TextStyle(
-                  //                           color: Colors.black54),
-                  //                       readOnly: mail.length != 0
-                  //                           // !edit || emailctlr.text.length != 0
-                  //                           ? true
-                  //                           : false,
-                  //                       decoration: InputDecoration(
-                  //                           hintText: "abc@gmail.com",
-                  //                           helperText:
-                  //                               "Immutable if set once.",
-                  //                           labelText: "Email",
-                  //                           labelStyle: TextStyle(
-                  //                               color: Colors.black,
-                  //                               fontSize: 20)),
-                  //                       controller: emailctlr,
-                  //                       onSaved: (value) {
-                  //                         emailctlr.text = value;
-                  //                       },
-                  //                     ),
-                  //                     leading: Icon(Icons.email),
-                  //                   )
-                  //                 : ListTile(
-                  //                     leading: Icon(Icons.email),
-                  //                     title: Text("Email"),
-                  //                     subtitle: Text("${emailctlr.text}"),
-                  //                   ),
-                  //             edit
-                  //                 ? ListTile(
-                  //                     title: TextFormField(
-                  //                       keyboardType: TextInputType.number,
-                  //                       style: TextStyle(
-                  //                           color: Colors.black54),
-                  //                       readOnly: !edit ? true : false,
-                  //                       decoration: InputDecoration(
-                  //                           labelText: "Phone",
-                  //                           labelStyle: TextStyle(
-                  //                               color: Colors.black,
-                  //                               fontSize: 20)),
-                  //                       controller: phnctlr,
-                  //                       onSaved: (value) {
-                  //                         phnctlr.text = value;
-                  //                       },
-                  //                     ),
-                  //                     leading: Icon(Icons.phone),
-                  //                   )
-                  //                 : ListTile(
-                  //                     title: Text("Phone"),
-                  //                     leading: Icon(Icons.phone),
-                  //                     subtitle: Text("${phnctlr.text}"),
-                  //                   ),
-                  //             ListTile(
-                  //               title: Text("Joined Date"),
-                  //               subtitle: Text("$joindate"),
-                  //               leading: Icon(Icons.calendar_view_day),
-                  //             ),
-                  //             edit
-                  //                 ? Row(
-                  //                     mainAxisAlignment:
-                  //                         MainAxisAlignment.spaceAround,
-                  //                     children: <Widget>[
-                  //                       Builder(builder:
-                  //                           (BuildContext context) {
-                  //                         return FlatButton.icon(
-                  //                           splashColor: Colors.blue,
-                  //                           icon: Icon(
-                  //                             Icons.done,
-                  //                             color: Colors.green,
-                  //                           ),
-                  //                           label: Text("Submit"),
-                  //                           onPressed: () async {
-                  //                             _image == null
-                  //                                 ? updatedata()
-                  //                                 : await uploadFile(
-                  //                                     context);
-
-                  //                             setState(() {
-                  //                               edit = false;
-                  //                             });
-                  //                           },
-                  //                         );
-                  //                       }),
-                  //                       FlatButton.icon(
-                  //                         splashColor: Colors.blue,
-                  //                         icon: Icon(
-                  //                           Icons.cancel,
-                  //                           color: Colors.red,
-                  //                         ),
-                  //                         label: Text("Cancel"),
-                  //                         onPressed: () {
-                  //                           //for on cancel editing to show data as it is
-                  //                           setState(() {
-                  //                             currentuser();
-                  //                             _image = null;
-
-                  //                             edit = false;
-                  //                           });
-                  //                         },
-                  //                       ),
-                  //                     ],
-                  //                   )
-                  //                 : Container(),
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     Divider(),
-                  //     Container(
-                  //       margin: const EdgeInsets.symmetric(horizontal: 30),
-                  //       decoration: BoxDecoration(
-                  //         color: Colors.white,
-                  //         borderRadius: BorderRadius.circular(5.0),
-                  //       ),
-                  //       child: Column(
-                  //         children: <Widget>[
-                  //           ListTile(
-                  //             title: Text("Subscriptions"),
-                  //           ),
-                  //           Divider(),
-                  //           transaction.length > 0
-                  //               ? ListView(
-                  //                   shrinkWrap: true,
-                  //                   children: transaction
-                  //                       .map((item) => Padding(
-                  //                             padding: const EdgeInsets.all(
-                  //                                 10.0),
-                  //                             child: Wrap(
-                  //                               runSpacing: 10,
-                  //                               children: <Widget>[
-                  //                                 Row(
-                  //                                   mainAxisAlignment:
-                  //                                       MainAxisAlignment
-                  //                                           .spaceBetween,
-                  //                                   children: <Widget>[
-                  //                                     Text(
-                  //                                       "TransactionId",
-                  //                                       style: TextStyle(
-                  //                                           fontWeight:
-                  //                                               FontWeight
-                  //                                                   .w500),
-                  //                                     ),
-                  //                                     Text(item[
-                  //                                         'transactionId']),
-                  //                                   ],
-                  //                                 ),
-                  //                                 Row(
-                  //                                   mainAxisAlignment:
-                  //                                       MainAxisAlignment
-                  //                                           .spaceBetween,
-                  //                                   children: <Widget>[
-                  //                                     Text(
-                  //                                       "Amount",
-                  //                                       style: TextStyle(
-                  //                                           fontWeight:
-                  //                                               FontWeight
-                  //                                                   .w500),
-                  //                                     ),
-                  //                                     Text(
-                  //                                         '\$${item['amount']}'),
-                  //                                   ],
-                  //                                 ),
-                  //                                 Row(
-                  //                                   mainAxisAlignment:
-                  //                                       MainAxisAlignment
-                  //                                           .spaceBetween,
-                  //                                   children: <Widget>[
-                  //                                     Text(
-                  //                                       "Subscribed on",
-                  //                                       style: TextStyle(
-                  //                                           fontWeight:
-                  //                                               FontWeight
-                  //                                                   .w500),
-                  //                                     ),
-                  //                                     Text(DateFormat
-                  //                                             .yMMMEd()
-                  //                                         .format(DateTime
-                  //                                                 .parse(item[
-                  //                                                     'subscribedAt'])
-                  //                                             .toLocal())
-                  //                                         .toString()),
-                  //                                   ],
-                  //                                 ),
-                  //                                 Row(
-                  //                                   mainAxisAlignment:
-                  //                                       MainAxisAlignment
-                  //                                           .spaceBetween,
-                  //                                   children: <Widget>[
-                  //                                     Text(
-                  //                                       "Expiry",
-                  //                                       style: TextStyle(
-                  //                                           fontWeight:
-                  //                                               FontWeight
-                  //                                                   .w500),
-                  //                                     ),
-                  //                                     Text(DateFormat
-                  //                                             .yMMMEd()
-                  //                                         .format(DateTime
-                  //                                                 .parse(item[
-                  //                                                     'expiryDate'])
-                  //                                             .toLocal())
-                  //                                         .toString()),
-                  //                                   ],
-                  //                                 ),
-                  //                                 Divider()
-                  //                               ],
-                  //                             ),
-                  //                           ))
-                  //                       .toList(),
-                  //                 )
-                  //               : Column(
-                  //                   children: <Widget>[
-                  //                     Text(
-                  //                         "You don't have any subscriptions yet."),
-                  //                     Text(
-                  //                         "Subscribe now to get access to unlimited content."),
-                  //                     SizedBox(
-                  //                       height: 10,
-                  //                     ),
-                  //                     FlatButton(
-                  //                       color: primaryColor,
-                  //                       textColor: Colors.white,
-                  //                       onPressed: () {
-                  //                         Navigator.push(
-                  //                           context,
-                  //                           CupertinoPageRoute(
-                  //                               builder: (context) =>
-                  //                                   Subscription()),
-                  //                         );
-                  //                       },
-                  //                       child: Text('SUBSCRIBE NOW'),
-                  //                     ),
-                  //                   ],
-                  //                 )
-                  //         ],
-                  //       ),
-                  //     )
-                  //   ],
-                  // ),
-                  ),
+                  )),
         ),
       ),
     );
