@@ -246,13 +246,13 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
       initialVideoId: 'FkZ8tucHCto',
       flags: YoutubePlayerFlags(autoPlay: true, mute: false, loop: true),
     );
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Container(
-        // height: MediaQuery.of(context).size.height * .28
-        // height: 200,
-        width: MediaQuery.of(context).size.width - 40,
-        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+    return Container(
+      // height: MediaQuery.of(context).size.height * .28
+      // height: 200,
+      width: MediaQuery.of(context).size.width - 40,
+      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15.0),
         child: YoutubePlayer(
           controller: _controller,
           showVideoProgressIndicator: true,
