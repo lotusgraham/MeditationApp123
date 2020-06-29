@@ -100,66 +100,61 @@ class _DetailsState extends State<Details> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: <Widget>[
-            Container(height: 20),
-            Hero(
-              tag: widget.id,
-              child: Container(
-                height: 85,
-                width: double.infinity,
-                padding: const EdgeInsets.only(left: 40),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                          "https://firebasestorage.googleapis.com/v0/b/${GlobalConfiguration().getString("firebaseProjectID")}.appspot.com/o/flamelink%2Fmedia%2F${widget.coverImage}?alt=media",
-                        ),
-                        alignment: Alignment.centerRight,
-                        fit: BoxFit.cover)),
-                child: Text(
-                  "${widget.name}",
-                  style: TextStyle(
-                      decoration: TextDecoration.none,
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
+      body: Column(
+        children: <Widget>[
+          // Container(height: 20),
+          Hero(
+            tag: widget.id,
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.2,
+              width: double.infinity,
+              padding: const EdgeInsets.only(left: 40),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(
+                        "https://firebasestorage.googleapis.com/v0/b/${GlobalConfiguration().getString("firebaseProjectID")}.appspot.com/o/flamelink%2Fmedia%2F${widget.coverImage}?alt=media",
+                      ),
+                      alignment: Alignment.centerRight,
+                      fit: BoxFit.cover)),
+              child: Text(
+                "${widget.name}",
+                style: TextStyle(
+                    decoration: TextDecoration.none,
+                    fontSize: Theme.of(context).textTheme.headline5.fontSize,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
               ),
             ),
-            Expanded(
-              child: Container(
-                child: PageView.builder(
-                    controller: ctrl,
-                    itemCount: audioDetailsList.length + 1,
-                    itemBuilder: (BuildContext context, int currentIdx) {
-                      Widget content = SizedBox();
-                      if (currentIdx == 0) {
-                        content = audioDetailsList.length == 0
-                            ? Shimmer.fromColors(
-                                baseColor: Colors.white,
-                                highlightColor: Colors.black,
-                                child: _buildTagPage())
-                            : _buildTagPage();
-                      } else if (audioDetailsList.length >= currentIdx) {
-                        // Active page
-                        bool active = currentIdx == currentPage;
-                        content = _buildStoryPage(
-                            audioDetailsList[currentIdx - 1],
-                            active,
-                            currentIdx);
-                      }
-                      return content;
-                    }),
-              ),
+          ),
+          Expanded(
+            child: Container(
+              child: PageView.builder(
+                  controller: ctrl,
+                  itemCount: audioDetailsList.length + 1,
+                  itemBuilder: (BuildContext context, int currentIdx) {
+                    Widget content = SizedBox();
+                    if (currentIdx == 0) {
+                      content = audioDetailsList.length == 0
+                          ? Shimmer.fromColors(
+                              baseColor: Colors.white,
+                              highlightColor: Colors.black,
+                              child: _buildTagPage())
+                          : _buildTagPage();
+                    } else if (audioDetailsList.length >= currentIdx) {
+                      // Active page
+                      bool active = currentIdx == currentPage;
+                      content = _buildStoryPage(
+                          audioDetailsList[currentIdx - 1], active, currentIdx);
+                    }
+                    return content;
+                  }),
             ),
-            Container(
-              height: 100,
-            )
-          ],
-        ),
+          ),
+          Container(
+            height: 100,
+          )
+        ],
       ),
     );
   }
