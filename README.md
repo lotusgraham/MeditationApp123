@@ -11,6 +11,24 @@ Opening your heart heals the mind and the world around you for a more peaceful, 
 
 ### Here are some screenshots of the app
 
+<div>
+<img src='demo/1.png' width='200'>
+<img src='demo/2.png' width='200'>
+<img src='demo/3.png' width='200'>
+<img src='demo/4.png' width='200'>
+<img src='demo/5.png' width='200'>
+<img src='demo/6.png' width='200'>
+<img src='demo/7.png' width='200'>
+<img src='demo/8.png' width='200'>
+<img src='demo/9.png' width='200'>
+<img src='demo/10.png' width='200'>
+<img src='demo/11.png' width='200'>
+<img src='demo/12.png' width='200'>
+<img src='demo/13.png' width='200'>
+<img src='demo/14.png' width='200'>
+<img src='demo/15.png' width='200'>
+</div>
+
 ### You download the app from here
 <a href=''>
 <img alt='Download from release' src='https://www.inspirefm.org/wp-content/uploads/button-apk.png' width=200>
