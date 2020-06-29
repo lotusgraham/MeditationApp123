@@ -5,7 +5,7 @@
   
 # Open Your Heart - Save the Planet - Meditation App
 
-Get out of your headspace and live in your mindspace.
+Get out of your headspace and live in your heart space.
  
 
 ### Save the Earth
