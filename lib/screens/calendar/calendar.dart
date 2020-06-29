@@ -1,13 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
-// import 'package:html/dom.dart' show Node;
-import 'package:meditation/models/i-cal-model.dart';
-import 'package:meditation/screens/calendar/calendarPm.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../models/i-cal-model.dart';
+import 'calendarPm.dart';
 // import 'package:html/parser.dart';
 
 class CalendarCustomWidget extends StatefulWidget {

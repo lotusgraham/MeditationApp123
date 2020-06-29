@@ -8,7 +8,7 @@ const Color _particleColor = Color(0xFFe3b04b);
 
 class ParticleAnimation extends StatefulWidget {
   final Size screenSize;
-  Color bgColor;
+  final Color bgColor;
   ParticleAnimation(
       {Key key, @required this.screenSize, this.bgColor = Colors.white})
       : super(key: key);

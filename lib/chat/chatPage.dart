@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:meditation/screens/edit-profile.dart';
+
+import '../screens/edit-profile.dart';
 
 //Change for the user name and avatar
 
@@ -114,7 +114,7 @@ class ChatMessage extends StatelessWidget {
   ChatMessage({this.text, this.animationController});
   final String text;
   final AnimationController animationController;
-  final Firestore _firestore = Firestore.instance;
+  // final Firestore _firestore = Firestore.instance;
 
   @override
   Widget build(BuildContext context) {

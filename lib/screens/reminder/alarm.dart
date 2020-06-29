@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'dart:math';
-import 'package:meditation/enums/gradient_animation_enum.dart';
-import 'package:meditation/util/gardient_animation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:flutter/material.dart';
-// import 'package:meditation/screens/reminder/reminder-stats.dart';
-import 'package:meditation/screens/reminder/reminder.dart';
-import 'package:meditation/util/color.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_animations/simple_animations.dart';
+
+import '../../enums/gradient_animation_enum.dart';
+import '../../util/color.dart';
+import 'reminder.dart';
 
 Time timeofalarm;
 var showtime;
@@ -182,7 +182,7 @@ class _AlarmState extends State<Alarm> {
                     text: TextSpan(children: [
                       TextSpan(text: "\n"),
                       TextSpan(
-                        text: "Set Reminder",
+                        text: "Set some Reminders",
                         style: TextStyle(
                             color: Color(0xFF1A1A1A),
                             fontSize: 20,
@@ -191,7 +191,7 @@ class _AlarmState extends State<Alarm> {
                       TextSpan(text: "\n"),
                       TextSpan(
                         text:
-                            "The people who set reminder achieve their goals twice as fast.",
+                            "People who set reminders achieve their goals twice as fast.",
                         style:
                             TextStyle(color: Color(0xFF1A1A1A), fontSize: 12),
                       )
@@ -369,7 +369,7 @@ class AnimatedWave extends StatelessWidget {
             control: CustomAnimationControl.LOOP,
             duration: Duration(milliseconds: (5000 / speed).round()),
             tween: Tween(begin: 0.0, end: 2 * pi),
-            builder: (builder, context, value) {
+            builder: (context, child, value) {
               return CustomPaint(
                 foregroundPainter: CurvePainter(value + offset),
               );

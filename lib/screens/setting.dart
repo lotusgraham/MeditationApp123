@@ -1,12 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meditation/screens/auth/login/login.dart';
-import 'package:meditation/screens/edit-profile.dart';
-import 'package:meditation/screens/invite-firends.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:meditation/screens/payment/subscription.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:meditation/screens/reminder/alarm.dart';
+
+import 'auth/login/login.dart';
+import 'edit-profile.dart';
+import 'invite-firends.dart';
+import 'reminder/alarm.dart';
 
 class Setting extends StatefulWidget {
   @override

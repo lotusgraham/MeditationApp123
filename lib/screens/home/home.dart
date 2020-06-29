@@ -195,7 +195,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                       dynamic cl = homePm.categoryList[index];
                       return GestureDetector(
                         child: Hero(
-                          tag: cl['id'],
+                          tag: cl['name'],
                           child: Container(
                             padding: const EdgeInsets.only(
                                 top: 20, left: 10, right: 10),
