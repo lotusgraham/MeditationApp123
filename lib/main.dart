@@ -1,11 +1,11 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:meditation/provider/auth_provider.dart';
-import 'package:meditation/screens/splash.dart';
-import 'package:meditation/util/color.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:provider/provider.dart';
+
+import 'provider/auth_provider.dart';
+import 'screens/splash.dart';
+import 'util/color.dart';
 
 void main() async {
   return runApp(MyApp());

@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'dart:math';
-import 'package:meditation/enums/gradient_animation_enum.dart';
-import 'package:meditation/util/gardient_animation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:flutter/material.dart';
-// import 'package:meditation/screens/reminder/reminder-stats.dart';
-import 'package:meditation/screens/reminder/reminder.dart';
-import 'package:meditation/util/color.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_animations/simple_animations.dart';
+
+import '../../enums/gradient_animation_enum.dart';
+import '../../util/color.dart';
+import 'reminder.dart';
 
 Time timeofalarm;
 var showtime;
@@ -365,11 +365,11 @@ class AnimatedWave extends StatelessWidget {
       return Container(
         height: height,
         width: constraints.biggest.width,
-        child: ControlledAnimation(
-            playback: Playback.LOOP,
+        child: CustomAnimation(
+            control: CustomAnimationControl.LOOP,
             duration: Duration(milliseconds: (5000 / speed).round()),
             tween: Tween(begin: 0.0, end: 2 * pi),
-            builder: (context, value) {
+            builder: (context, child, value) {
               return CustomPaint(
                 foregroundPainter: CurvePainter(value + offset),
               );
