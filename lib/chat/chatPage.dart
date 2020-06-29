@@ -1,48 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:meditation/screens/edit-profile.dart';
 
 //Change for the user name and avatar
 
-class ChatMessage extends StatelessWidget {
-  ChatMessage({this.text, this.animationController});
-  final String text;
-  final AnimationController animationController;
-
-  @override
-  Widget build(BuildContext context) {
-    String _name = 'Name';
-    return SizeTransition(
-      sizeFactor:
-          CurvedAnimation(parent: animationController, curve: Curves.easeOut),
-      axisAlignment: 0.0,
-      child: Container(
-          margin: EdgeInsets.symmetric(vertical: 10.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(right: 16.0),
-                child: CircleAvatar(child: Text('$_name')), // Change the avatar
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('$_name',
-                        style: Theme.of(context).textTheme.headline4),
-                    Container(
-                      margin: EdgeInsets.only(top: 5.0),
-                      child: Text(text),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          )),
-    );
-  }
-}
-
 class Chat extends StatefulWidget {
+  const Chat({Key key}) : super(key: key);
+
   @override
   _ChatState createState() => _ChatState();
 }
@@ -80,7 +44,7 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin {
           ),
           Divider(height: 1.0),
           Container(
-            margin: EdgeInsets.only(bottom: 60.0),
+            margin: EdgeInsets.only(bottom: 66.0),
             decoration: BoxDecoration(color: Theme.of(context).cardColor),
             child: _buildTextComposer(),
           ),
@@ -91,7 +55,7 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin {
 
   Widget _buildTextComposer() {
     return IconTheme(
-      data: IconThemeData(color: Theme.of(context).accentColor),
+      data: IconThemeData(color: Colors.green),
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 8.0),
         child: Row(
@@ -143,5 +107,47 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin {
     });
     _focusNode.requestFocus();
     message.animationController.forward();
+  }
+}
+
+class ChatMessage extends StatelessWidget {
+  ChatMessage({this.text, this.animationController});
+  final String text;
+  final AnimationController animationController;
+  final Firestore _firestore = Firestore.instance;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizeTransition(
+      sizeFactor:
+          CurvedAnimation(parent: animationController, curve: Curves.easeOut),
+      axisAlignment: 0.0,
+      child: Container(
+          margin: EdgeInsets.symmetric(vertical: 10.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(right: 16.0),
+                child: CircleAvatar(
+                    child:
+                        Text('${username.toString()[0]}')), // Change the avatar
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('${username.toString()}',
+                        style: Theme.of(context).textTheme.headline4),
+                    Container(
+                      margin: EdgeInsets.only(top: 5.0),
+                      child: Text(text),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          )),
+    );
   }
 }

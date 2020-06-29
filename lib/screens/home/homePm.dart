@@ -23,10 +23,11 @@ class HomePm extends ChangeNotifier {
 
   initYtController() {
     this.controller = YoutubePlayerController(
-      initialVideoId: 'FkZ8tucHCto',
+      initialVideoId: '54wc1r-toAw',
       flags: YoutubePlayerFlags(
         loop: true,
         autoPlay: false,
+        startAt: 55,
       ),
     );
   }

@@ -11,7 +11,6 @@
 #endif
 
 #import "FLTVideoPlayerPlugin.h"
-#import "messages.h"
 
 FOUNDATION_EXPORT double video_playerVersionNumber;
 FOUNDATION_EXPORT const unsigned char video_playerVersionString[];
