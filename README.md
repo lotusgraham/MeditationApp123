@@ -37,7 +37,7 @@ Software won't save the earth.. but you will.. If everyone opened their heart, t
 
 ### You download the app from here
 
-<a  href='https://github.com/lotusgraham/MeditationApp123/releases/download/0.1/NWL-meditation_app.apk'>
+<a  href='https://github.com/lotusgraham/MeditationApp123/releases/tag/0.1'>
 <img  alt='Download from release'  src='https://www.inspirefm.org/wp-content/uploads/button-apk.png'  width=200>
 </a>
 
