@@ -1,20 +1,18 @@
 {
   "name": "flutter_plugin_android_lifecycle",
   "version": "0.0.1",
-  "summary": "Flutter Android Lifecycle Plugin",
-  "description": "A Flutter plugin for Android to allow other Flutter plugins to access Android Lifecycle objects in the plugin's binding.\nThis plugin a no-op on iOS.\nDownloaded by pub (not CocoaPods).",
-  "homepage": "https://github.com/flutter/plugins",
+  "summary": "A new flutter plugin project.",
+  "description": "A new flutter plugin project.",
+  "homepage": "http://example.com",
   "license": {
-    "type": "BSD",
     "file": "../LICENSE"
   },
   "authors": {
-    "Flutter Dev Team": "flutter-dev@googlegroups.com"
+    "Your Company": "email@example.com"
   },
   "source": {
-    "http": "https://github.com/flutter/plugins/tree/master/packages/flutter_plugin_android_lifecycle"
+    "path": "."
   },
-  "documentation_url": "https://pub.dev/packages/flutter_plugin_android_lifecycle",
   "source_files": "Classes/**/*",
   "public_header_files": "Classes/**/*.h",
   "dependencies": {
