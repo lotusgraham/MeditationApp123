@@ -41,6 +41,7 @@ unlinked_spec.ds
 
 # android related
 android/.gradle/*
+**/GeneratedPluginRegistrant.*
 
 # Web related
 lib/generated_plugin_registrant.dart

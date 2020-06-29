@@ -277,6 +277,15 @@ class _AlarmState extends State<Alarm> {
                       ),
                     )
                   : SizedBox(),
+
+              multipleAlarm == null || multipleAlarm.isEmpty
+                  ? Container(
+                      child: Text(
+                        "Tap the add buton to add Alarm",
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  : Container(),
               Container(
                 padding: EdgeInsets.only(top: 16, right: 16),
                 alignment: Alignment.bottomRight,
@@ -316,11 +325,11 @@ class BackGroundAnimation extends StatelessWidget {
     final _tween = MultiTween()
       ..add(
         GradientAnimationEnum.left,
-        ColorTween(begin: Colors.lightBlue[200], end: Colors.deepPurple[200]),
+        ColorTween(begin: Colors.lightBlue[30], end: Colors.deepPurple[50]),
       )
       ..add(
         GradientAnimationEnum.right,
-        ColorTween(begin: Colors.indigo[200], end: Colors.lightBlue[200]),
+        ColorTween(begin: Colors.indigo[50], end: Colors.lightBlue[30]),
       );
 
     return CustomAnimation(
@@ -377,7 +386,7 @@ class CurvePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final white = Paint()..color = Colors.indigo[300].withAlpha(50);
+    final white = Paint()..color = Colors.indigo[100].withAlpha(50);
     final path = Path();
 
     final y1 = sin(value);

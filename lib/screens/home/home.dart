@@ -9,7 +9,7 @@ import 'package:meditation/screens/calendar/calendarPm.dart';
 import 'package:meditation/screens/home/homePm.dart';
 import 'package:meditation/util/onWillPop.dart';
 import 'package:provider/provider.dart';
-import 'package:meditation/chat/chatfire.dart';
+import 'package:meditation/chat/ChatPage.dart';
 import 'package:meditation/screens/reminder/alarm.dart';
 import 'package:meditation/screens/setting.dart';
 import 'package:meditation/util/color.dart';
@@ -327,7 +327,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
     }
 
     Widget _page1 = SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+      physics: ClampingScrollPhysics(),
       child: Container(
         height: MediaQuery.of(context).size.height +
             120 * (homePm.categoryList.length / 2).round().toDouble(),
@@ -355,7 +355,10 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
       child: Scaffold(
         body: Stack(
           children: <Widget>[
-            pages.elementAt(homePm.selectedIndex),
+            IndexedStack(
+              index: homePm.selectedIndex,
+              children: pages,
+            ),
             Align(
               alignment: Alignment.bottomCenter,
               child: buildBottomNavigationBar(),

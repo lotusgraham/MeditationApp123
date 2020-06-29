@@ -9,6 +9,7 @@ class HomePm extends ChangeNotifier {
   List featuredStoryList = [];
   List categoryList = [];
   int selectedIndex = 0;
+  bool wasVideoPlaying = false;
 
   BuildContext context;
   YoutubePlayerController controller;
@@ -24,14 +25,25 @@ class HomePm extends ChangeNotifier {
     this.controller = YoutubePlayerController(
       initialVideoId: 'FkZ8tucHCto',
       flags: YoutubePlayerFlags(
-        autoPlay: true,
         loop: true,
+        autoPlay: false,
       ),
     );
   }
 
   changeSelectedPage(int i) {
+    if (i == 0 && wasVideoPlaying) {
+      controller.play();
+    } else if (selectedIndex == 0) {
+      if (controller.value.isPlaying) {
+        wasVideoPlaying = true;
+        controller.pause();
+      } else {
+        wasVideoPlaying = false;
+      }
+    }
     selectedIndex = i;
+
     _notify();
   }
 
