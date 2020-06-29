@@ -53,14 +53,18 @@ class _StoriesState extends State<Stories> {
     while (storyItemDetails.length > n) {
       // When there is image or gif.
       if (storyItemDetails[n].containsKey('storyImage')) {
-        items.add(StoryItem.pageGif(
+        items.add(
+          StoryItem.pageGif(
             "https://firebasestorage.googleapis.com/v0/b/${GlobalConfiguration().getString("firebaseProjectID")}.appspot.com/o/flamelink%2Fmedia%2F${storyItemDetails[n]['storyImage']}?alt=media",
             imageFit: BoxFit.cover,
+            duration: const Duration(seconds: 10),
             // shown: true,
             controller: storyController,
             caption: storyItemDetails[n].containsKey('caption')
                 ? storyItemDetails[n]['caption']
-                : null));
+                : null,
+          ),
+        );
       }
       // When there is only caption and no image.
       if (!storyItemDetails[n].containsKey('storyImage') &&
