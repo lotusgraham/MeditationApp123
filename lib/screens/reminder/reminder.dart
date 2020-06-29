@@ -20,7 +20,7 @@ class Reminder extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "Reach your goal by setting",
+                  "Reach your goal by setting a",
                   //"Meditate",
                   textAlign: TextAlign.center,
                   style: TextStyle(

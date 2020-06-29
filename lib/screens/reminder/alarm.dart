@@ -182,7 +182,7 @@ class _AlarmState extends State<Alarm> {
                     text: TextSpan(children: [
                       TextSpan(text: "\n"),
                       TextSpan(
-                        text: "Set Reminder",
+                        text: "Set some Reminders",
                         style: TextStyle(
                             color: Color(0xFF1A1A1A),
                             fontSize: 20,
@@ -191,7 +191,7 @@ class _AlarmState extends State<Alarm> {
                       TextSpan(text: "\n"),
                       TextSpan(
                         text:
-                            "The people who set reminder achieve their goals twice as fast.",
+                            "People who set reminders achieve their goals twice as fast.",
                         style:
                             TextStyle(color: Color(0xFF1A1A1A), fontSize: 12),
                       )
