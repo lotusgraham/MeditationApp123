@@ -249,6 +249,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>flutter_inappwebview.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>flutter_local_notifications.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -335,6 +340,21 @@
 			<false/>
 		</dict>
 		<key>sqflite.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>url_launcher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>url_launcher_macos.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>url_launcher_web.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

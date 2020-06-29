@@ -179,9 +179,9 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Text("Categories",
+            const Text("Guided Meditations",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
-            const Text("What is your priority right now?",
+            const Text("Listen to a soothing audio recording...",
                 style: TextStyle(fontSize: 12)),
             const SizedBox(height: 20),
             homePm.categoryList.length > 0
