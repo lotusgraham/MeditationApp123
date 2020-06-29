@@ -18,16 +18,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   List<SplashModel> welcomeData = [
     SplashModel(
-        header: "Controls",
-        title: "Test Study",
+        header: "Relax and Smile",
+        title: "It's Natural",
         description:
-            "Most people have practicing regular meditation and maintained lower anxiety levels over the long term",
+            "One thing you can do to help lower your anxiety and improve your overall sense of wellbeing is to smile to your heart.",
         img: "asset/img/Scroll-1.png"),
     SplashModel(
-        header: "Self-Awareness",
-        title: "Self-Defeating",
+        header: "Free Live Sessions",
+        title: "Calendar of Meditations",
         description:
-            "A study of 21 women fighting breast cancer found that when they took part in a tai chi program",
+            "Learn this simple method of connecting with the peace within you by attending some live guided sessions",
         img: "asset/img/Scroll-2.png"),
     SplashModel(
         header: "Attention Span",
