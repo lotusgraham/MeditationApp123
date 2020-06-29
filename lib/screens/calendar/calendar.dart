@@ -147,60 +147,71 @@ class _CalendarCustomWidgetState extends State<CalendarCustomWidget> {
       );
     }
 
-    return (calendarPm.iCalModel != null)
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 15.0, bottom: 10.0),
-                child: viewSwitcher(),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.8,
-                child: Card(
-                  elevation: 10.0,
-                  margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0),
-                  child: SfCalendar(
-                    dataSource:
-                        CalDataSource(calendarPm.iCalModel.vcalendar[0].vevent),
-                    controller: calendarPm.controller,
-                    view: calendarPm.view,
-                    onTap: handleTap,
-                    onViewChanged: calendarPm.onViewChange,
-                    monthViewSettings: MonthViewSettings(),
-                    todayHighlightColor: Theme.of(context).primaryColor,
-                    headerStyle: CalendarHeaderStyle(
-                      textStyle: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 18.0,
-                      ),
-                    ),
-                    viewHeaderStyle: ViewHeaderStyle(
-                      dateTextStyle: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 16.0,
-                      ),
-                      dayTextStyle: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 16.0,
-                      ),
-                    ),
-                    appointmentTextStyle: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18.0,
-                    ),
-                    initialDisplayDate: calendarPm.date,
+    return SafeArea(
+      child: (calendarPm.iCalModel != null)
+          ? Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15.0, bottom: 10.0),
+                    child: viewSwitcher(),
                   ),
-                ),
+                  Flexible(
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.8,
+                      child: Card(
+                        elevation: 10.0,
+                        margin:
+                            EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0),
+                        child: SfCalendar(
+                          dataSource: CalDataSource(
+                              calendarPm.iCalModel.vcalendar[0].vevent),
+                          controller: calendarPm.controller,
+                          view: calendarPm.view,
+                          onTap: handleTap,
+                          onViewChanged: calendarPm.onViewChange,
+                          monthViewSettings: MonthViewSettings(),
+                          todayHighlightColor: Theme.of(context).primaryColor,
+                          headerStyle: CalendarHeaderStyle(
+                            textStyle: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 18.0,
+                            ),
+                          ),
+                          viewHeaderStyle: ViewHeaderStyle(
+                            dateTextStyle: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 16.0,
+                            ),
+                            dayTextStyle: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          appointmentTextStyle: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18.0,
+                          ),
+                          initialDisplayDate: calendarPm.date,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                  )
+                ],
               ),
-            ],
-          )
-        : Center(
-            child: CircularProgressIndicator(),
-          );
+            )
+          : Center(
+              child: CircularProgressIndicator(),
+            ),
+    );
   }
 }
 

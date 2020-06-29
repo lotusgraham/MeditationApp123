@@ -259,28 +259,27 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                       physics: BouncingScrollPhysics(),
                       children: homePm.featuredStoryList.map((dynamic fsl) {
                         return GestureDetector(
-                            child: Container(
-                                height: 90,
-                                width: 162,
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 6),
-                                padding:
-                                    const EdgeInsets.only(top: 15, left: 20),
-                                child: Text(fsl['name'],
-                                    style: TextStyle(
-                                        color: textColor,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600)),
-                                decoration: BoxDecoration(
-                                    color: primaryColor.withOpacity(0.1),
-                                    image: DecorationImage(
-                                        image: NetworkImage(
-                                          "https://firebasestorage.googleapis.com/v0/b/${GlobalConfiguration().getString("firebaseProjectID")}.appspot.com/o/flamelink%2Fmedia%2F${fsl['coverImage']}?alt=media",
-                                        ),
-                                        alignment: Alignment.centerRight,
-                                        fit: BoxFit.cover),
-                                    borderRadius: BorderRadius.circular(10))),
-                            onTap: () => homePm.onStorySelect(fsl));
+                          child: Container(
+                              height: 90,
+                              width: 162,
+                              margin: const EdgeInsets.symmetric(horizontal: 6),
+                              padding: const EdgeInsets.only(top: 15, left: 20),
+                              child: Text(fsl['name'],
+                                  style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600)),
+                              decoration: BoxDecoration(
+                                  color: primaryColor.withOpacity(0.1),
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                        "https://firebasestorage.googleapis.com/v0/b/${GlobalConfiguration().getString("firebaseProjectID")}.appspot.com/o/flamelink%2Fmedia%2F${fsl['coverImage']}?alt=media",
+                                      ),
+                                      alignment: Alignment.centerRight,
+                                      fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.circular(10))),
+                          onTap: () => homePm.onStorySelect(fsl),
+                        );
                       }).toList())
                   : SizedBox(
                       height: 100.0,
