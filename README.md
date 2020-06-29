@@ -1,16 +1,20 @@
-# meditation
 
-A new Flutter project.
+<p align="center">
+  <img width="200" height="200" src="https://github.com/lotusgraham/MeditationApp123/blob/master/asset/img/logo-with-text.png?raw=true">
+</p>
 
-## Getting Started
+# NWL social meditation
+Get out of your headspace and live in your mindspace.
 
-This project is a starting point for a Flutter application.
+### Save the Earth 
+Opening your heart heals the mind and the world around you for a more peaceful, universally loving, harmonious environment.
 
-A few resources to get you started if this is your first Flutter project:
+### Here are some screenshots of the app
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### You download the app from here
+<a href=''>
+<img alt='Download from release' src='https://www.inspirefm.org/wp-content/uploads/button-apk.png' width=200>
+</a>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Hack20
+Thanks to Flutter Community for organizing such a wonderful event which made us to collaborate with other and feel like a family❤❤  
