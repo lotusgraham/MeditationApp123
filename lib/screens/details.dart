@@ -193,16 +193,16 @@ class _DetailsState extends State<Details> {
             CupertinoPageRoute(builder: (context) => Subscription()),
           );
         } else {
-          Navigator.push(
-            context,
-            CupertinoPageRoute(
-                builder: (context) => AudioPlayerDemo(
-                      audioName: data['audioName'],
-                      url: Uri.tryParse(
-                              "https://firebasestorage.googleapis.com/v0/b/${GlobalConfiguration().getString("firebaseProjectID")}.appspot.com/o/flamelink%2Fmedia%2F${data['audioFile']}?alt=media")
-                          .toString(),
-                    )),
-          );
+          // Navigator.push(
+          //   context,
+          //   CupertinoPageRoute(
+          //       builder: (context) => AudioPlayerDemo(
+          //             audioName: data['audioName'],
+          //             url: Uri.tryParse(
+          //                     "https://firebasestorage.googleapis.com/v0/b/${GlobalConfiguration().getString("firebaseProjectID")}.appspot.com/o/flamelink%2Fmedia%2F${data['audioFile']}?alt=media")
+          //                 .toString(),
+          //           )),
+          // );
         }
       },
       child: Container(
